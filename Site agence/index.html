@@ -8,287 +8,268 @@
 <meta name="description" content="Teranga Consulting accompagne les PME, ONG et institutions du Sénégal : informatique, communication et formation. Prix en FCFA, paiement Wave et Orange Money.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://images.unsplash.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap">
+<link rel="preconnect" href="https://api.dicebear.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap">
 <style>
-/* Mise en page : éditoriale, alignée à gauche, photos réelles. Bleu nuit pour les grandes bandes (en-tête, héros, offre phare, pied de page), jaune soleil pour les actions et un bandeau. */
+/* Mise en page : éditoriale, alignée à gauche. Deux couleurs seulement, bleu clair et jaune, sur fond blanc ; le texte en encre foncée. Illustrations : avatars dessinés au trait. Thème clair unique, volontairement. */
 :root {
-  --bg: #FFFFFF;
-  --soft: #F2F5FB;
-  --ink: #0E1530;
-  --muted: #4F5873;
-  --line: #DCE2EF;
-  --brand: #1A44C2;
-  --brand-ink: #FFFFFF;
-  --brand-soft: #E5ECFC;
-  --blue: #0B2A78;
-  --blue-deep: #081F5C;
-  --on-blue: #FFFFFF;
-  --yellow: #FFC72C;
-  --on-yellow: #15110A;
+  --white: #FFFFFF;
+  --sky: #5BC0FF;
+  --sky-soft: #E8F6FF;
+  --sky-line: #C4E7FF;
+  --yellow: #FFD23F;
+  --yellow-soft: #FFF5D1;
+  --ink: #0D1B2E;
+  --muted: #3D4F66;
   --font: "Schibsted Grotesk", "Helvetica Neue", Arial, system-ui, sans-serif;
   --ease: cubic-bezier(.2, .7, .2, 1);
   color-scheme: light;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #0A0E1D; --soft: #10162C; --ink: #EDF1FA; --muted: #A2ABC5; --line: #222B4A;
-    --brand: #93B2FF; --brand-ink: #0A0E1D; --brand-soft: #172251;
-    --blue: #0E2B73; --blue-deep: #091E55;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #0A0E1D; --soft: #10162C; --ink: #EDF1FA; --muted: #A2ABC5; --line: #222B4A;
-  --brand: #93B2FF; --brand-ink: #0A0E1D; --brand-soft: #172251;
-  --blue: #0E2B73; --blue-deep: #091E55;
-  color-scheme: dark;
-}
 
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-body { margin: 0; background: var(--bg); color: var(--ink); font: 400 1.0625rem/1.6 var(--font); -webkit-font-smoothing: antialiased; }
-body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+body { margin: 0; background: var(--white); color: var(--ink); font: 400 1.0625rem/1.6 var(--font); -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--white); }
 img { max-width: 100%; height: auto; display: block; }
+[hidden] { display: none !important; }
 h1, h2, h3 { margin: 0; line-height: 1.05; letter-spacing: -0.025em; font-weight: 700; text-wrap: balance; }
 h2 { font-size: clamp(2rem, 4.2vw, 3.25rem); }
 h3 { font-size: 1.3rem; letter-spacing: -0.01em; line-height: 1.25; }
 p { margin: 0; }
 a { color: inherit; }
-:focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 .skip { position: absolute; left: -9999px; }
-.skip:focus { left: 16px; top: 16px; z-index: 50; background: var(--ink); color: var(--bg); padding: 10px 14px; }
+.skip:focus { left: 16px; top: 16px; z-index: 50; background: var(--yellow); color: var(--ink); padding: 10px 14px; }
 
 .wrap { max-width: 1200px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
 .section { padding-block: clamp(72px, 9vw, 120px); }
-.soft { background: var(--soft); }
-.kicker { font-size: 0.95rem; font-weight: 600; color: var(--brand); margin-bottom: 14px; display: block; }
+.soft { background: var(--sky-soft); }
+.kicker { display: inline-block; font-size: 0.9rem; font-weight: 700; background: var(--yellow); padding: 4px 10px; border-radius: 4px; margin-bottom: 16px; }
 .intro { display: grid; grid-template-columns: 5fr 6fr; gap: 24px 64px; align-items: end; margin-bottom: clamp(40px, 6vw, 72px); }
 .intro p { color: var(--muted); font-size: 1.125rem; max-width: 52ch; }
 @media (max-width: 860px) { .intro { grid-template-columns: 1fr; } }
+.mark { background: linear-gradient(transparent 58%, var(--yellow) 58%); padding-inline: 2px; }
+
+/* Avatars */
+.av { border-radius: 50%; border: 4px solid var(--white); background: var(--sky-soft); }
+.av.y { background: var(--yellow); }
 
 /* Boutons */
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 24px; border-radius: 6px; font: 600 1rem/1 var(--font); text-decoration: none; border: 1.5px solid transparent; cursor: pointer; transition: background-color .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease); }
-.btn-primary { background: var(--brand); color: var(--brand-ink); }
-.btn-primary:hover { background: color-mix(in srgb, var(--brand) 86%, var(--ink)); }
-.btn-dark { background: var(--ink); color: var(--bg); }
-.btn-dark:hover { background: var(--brand); color: var(--brand-ink); }
-.btn-outline { border-color: var(--line); color: var(--ink); background: transparent; }
-.btn-outline:hover { border-color: var(--ink); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 24px; border-radius: 8px; font: 700 1rem/1 var(--font); text-decoration: none; border: 2px solid transparent; cursor: pointer; transition: background-color .2s var(--ease), border-color .2s var(--ease), transform .2s var(--ease); }
+.btn:active { transform: scale(.98); }
+.btn-primary { background: var(--yellow); color: var(--ink); }
+.btn-primary:hover { background: #FFC400; }
+.btn-sky { background: var(--sky); color: var(--ink); }
+.btn-sky:hover { background: #3FB3FF; }
+.btn-outline { border-color: var(--ink); color: var(--ink); background: transparent; }
+.btn-outline:hover { background: var(--white); }
 .arrow { transition: transform .2s var(--ease); }
 .btn:hover .arrow { transform: translateX(3px); }
-.link { font-weight: 600; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 4px; text-decoration-color: var(--brand); }
 
 /* En-tête */
-.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--bg) 94%, transparent); backdrop-filter: saturate(1.4) blur(8px); border-bottom: 1px solid var(--line); }
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--white) 94%, transparent); backdrop-filter: saturate(1.4) blur(8px); border-bottom: 1px solid var(--sky-line); }
 .top .wrap { display: flex; align-items: center; gap: 32px; min-height: 72px; }
 .logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-size: 1.15rem; letter-spacing: -0.02em; }
-.logo-mark { width: 30px; height: 30px; border-radius: 5px; background: var(--brand); color: var(--brand-ink); display: grid; place-items: center; font-weight: 800; font-size: 1rem; }
+.logo-mark { width: 32px; height: 32px; border-radius: 8px; background: var(--yellow); color: var(--ink); display: grid; place-items: center; font-weight: 800; box-shadow: 3px 3px 0 var(--sky); }
 .logo b { font-weight: 800; }
 .logo-sub { font-weight: 400; color: var(--muted); }
 .menu { display: flex; gap: 28px; list-style: none; margin: 0 0 0 auto; padding: 0; font-weight: 500; font-size: 0.98rem; }
-.menu a { text-decoration: none; color: var(--muted); transition: color .2s; }
-.menu a:hover { color: var(--ink); }
+.menu a { text-decoration: none; color: var(--muted); }
+.menu a:hover { color: var(--ink); text-decoration: underline; text-decoration-color: var(--yellow); text-decoration-thickness: 3px; text-underline-offset: 6px; }
 .top .btn { min-height: 42px; padding: 0 18px; font-size: 0.95rem; }
 @media (max-width: 920px) { .menu { display: none; } .top .btn { margin-left: auto; } }
 @media (max-width: 400px) { .logo-sub { display: none; } }
 
 /* Héros */
-.hero { padding-block: clamp(40px, 6vw, 80px) clamp(56px, 8vw, 96px); }
-.hero .wrap { display: grid; grid-template-columns: 1.2fr 0.9fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
-.hero h1 { font-size: clamp(2.3rem, 5vw, 4.2rem); letter-spacing: -0.035em; font-weight: 800; }
-.hero h1 span { color: var(--brand); }
+.hero { background: var(--sky); overflow: hidden; padding-block: clamp(48px, 7vw, 96px); }
+.hero .wrap { display: grid; grid-template-columns: 1.15fr 0.95fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
+.hero h1 { font-size: clamp(2.4rem, 5.2vw, 4.4rem); letter-spacing: -0.035em; font-weight: 800; }
+.hero h1 .mark { background: linear-gradient(var(--yellow), var(--yellow)) left 85% / 0% 42% no-repeat; animation: marker .8s .3s var(--ease) forwards; }
+@keyframes marker { to { background-size: 100% 42%; } }
 .hero-text { display: grid; gap: 26px; min-width: 0; }
-.hero-text > p { font-size: 1.2rem; color: var(--muted); max-width: 46ch; }
+.hero-text > p { font-size: 1.2rem; max-width: 46ch; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
-.hero-photo { position: relative; min-width: 0; }
-.hero-photo img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 8px; background: var(--soft); }
-.hero-note { position: absolute; left: -28px; bottom: 32px; background: var(--bg); border-radius: 8px; padding: 16px 20px; box-shadow: 0 18px 40px -18px rgb(0 0 0 / .35); display: grid; gap: 2px; max-width: 260px; }
-.hero-note small { color: var(--muted); font-size: 0.85rem; }
-.hero-note strong { font-size: 1.5rem; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+
+.collage { position: relative; width: 100%; max-width: 520px; aspect-ratio: 1 / 1; justify-self: end; }
+.collage .blob { position: absolute; inset: 7%; background: var(--white); border-radius: 46% 54% 52% 48% / 50% 44% 56% 50%; }
+.collage .av { position: absolute; border-width: 6px; }
+.c1 { width: 42%; left: 9%; top: 9%; }
+.c2 { width: 31%; right: 8%; top: 6%; }
+.c3 { width: 27%; left: 3%; bottom: 13%; }
+.c4 { width: 36%; right: 6%; bottom: 9%; }
+.c5 { width: 22%; left: 38%; bottom: 2%; }
+.tag { position: absolute; background: var(--white); border: 2px solid var(--ink); border-radius: 10px; padding: 8px 12px; font-size: 0.86rem; line-height: 1.3; box-shadow: 4px 4px 0 var(--ink); white-space: nowrap; }
+.tag b { display: block; font-size: 1.1rem; font-variant-numeric: tabular-nums; }
+.t1 { left: 34%; top: 47%; background: var(--yellow); }
+.t2 { left: 0; top: 2%; }
 @media (max-width: 900px) {
   .hero .wrap { grid-template-columns: 1fr; }
-  .hero-photo img { aspect-ratio: 4 / 3; }
-  .hero-note { left: 16px; bottom: 16px; }
+  .collage { justify-self: center; max-width: 440px; }
 }
+@media (max-width: 420px) { .tag { font-size: 0.78rem; padding: 6px 9px; } .tag b { font-size: 0.98rem; } }
 
-.facts { border-block: 1px solid var(--line); }
+.facts { background: var(--yellow); }
 .facts .wrap { display: grid; grid-template-columns: repeat(4, 1fr); }
-.facts p { padding: 22px 20px; border-left: 1px solid var(--line); font-size: 0.98rem; color: var(--muted); }
+.facts p { padding: 22px 20px; border-left: 1.5px solid color-mix(in srgb, var(--ink) 15%, transparent); font-size: 0.98rem; color: var(--ink); }
 .facts p:first-child { border-left: 0; padding-left: 0; }
-.facts b { display: block; color: var(--ink); font-weight: 600; }
-@media (max-width: 900px) { .facts .wrap { grid-template-columns: 1fr 1fr; } .facts p:nth-child(3) { border-left: 0; padding-left: 0; } .facts p:nth-child(n+3) { border-top: 1px solid var(--line); } }
-@media (max-width: 520px) { .facts .wrap { grid-template-columns: 1fr; } .facts p { border-left: 0; padding-left: 0; } .facts p + p { border-top: 1px solid var(--line); } }
+.facts b { display: block; font-weight: 700; }
+@media (max-width: 900px) { .facts .wrap { grid-template-columns: 1fr 1fr; } .facts p:nth-child(3) { border-left: 0; padding-left: 0; } .facts p:nth-child(n+3) { border-top: 1.5px solid color-mix(in srgb, var(--ink) 15%, transparent); } }
+@media (max-width: 520px) { .facts .wrap { grid-template-columns: 1fr; } .facts p { border-left: 0; padding-left: 0; } .facts p + p { border-top: 1.5px solid color-mix(in srgb, var(--ink) 15%, transparent); } }
 
-/* Services : rangées */
-.services { border-top: 1px solid var(--ink); }
-.service { display: grid; grid-template-columns: 4fr 5fr 3fr; gap: 20px 48px; padding-block: 36px; border-bottom: 1px solid var(--line); }
-.service h3 { font-size: clamp(1.6rem, 2.8vw, 2.1rem); letter-spacing: -0.03em; }
+/* Services */
+.services { border-top: 2px solid var(--ink); }
+.service { display: grid; grid-template-columns: 4fr 5fr 3fr; gap: 20px 48px; align-items: start; padding-block: 36px; border-bottom: 1px solid var(--sky-line); }
+.service h3 { font-size: clamp(1.6rem, 2.8vw, 2.1rem); letter-spacing: -0.03em; display: flex; align-items: center; gap: 14px; }
+.service h3 span { width: 14px; height: 14px; border-radius: 50%; background: var(--sky); flex: none; }
+.service:nth-child(2) h3 span { background: var(--yellow); }
 .service > p { color: var(--muted); font-size: 1.08rem; }
 .service ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-size: 0.98rem; }
-.service li { padding-left: 16px; position: relative; }
-.service li::before { content: ""; position: absolute; left: 0; top: 0.72em; width: 6px; height: 1.5px; background: var(--brand); }
+.service li { padding-left: 18px; position: relative; }
+.service li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 8px; height: 8px; border-radius: 2px; background: var(--sky); }
 @media (max-width: 900px) { .service { grid-template-columns: 1fr; } }
 
-/* Méthode */
+/* Mission */
 .method { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(32px, 6vw, 88px); align-items: start; }
-.method img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 8px; background: var(--line); position: sticky; top: 100px; }
-.steps { list-style: none; margin: 0; padding: 0; counter-reset: s; display: grid; gap: 0; }
-.steps li { counter-increment: s; padding-block: 28px; border-top: 1px solid var(--line); display: grid; grid-template-columns: 56px 1fr; gap: 6px 16px; }
-.steps li:last-child { border-bottom: 1px solid var(--line); }
-.steps li::before { content: counter(s); grid-row: span 2; width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid var(--ink); display: grid; place-items: center; font-weight: 700; }
+.scene { position: sticky; top: 100px; background: var(--white); border: 2px solid var(--ink); border-radius: 16px; padding: clamp(22px, 3vw, 32px); box-shadow: 8px 8px 0 var(--sky); display: grid; gap: 20px; }
+.duo { display: flex; align-items: flex-end; gap: 14px; }
+.duo .av { width: 112px; }
+.duo .bubble { background: var(--yellow-soft); border: 2px solid var(--ink); border-radius: 14px 14px 14px 4px; padding: 10px 14px; font-weight: 600; font-size: 0.95rem; margin-bottom: 18px; }
+.report { border-top: 2px dashed var(--sky-line); padding-top: 18px; display: grid; gap: 10px; }
+.report-head { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+.report-head b { font-size: 1.05rem; }
+.report-head small { font-size: 0.78rem; font-weight: 700; background: var(--sky-soft); padding: 3px 8px; border-radius: 4px; }
+.report ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; font-size: 0.95rem; }
+.report li { display: flex; justify-content: space-between; gap: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--sky-soft); }
+.report li span:last-child { font-weight: 600; text-align: right; }
+.report .total { background: var(--yellow); border-radius: 8px; padding: 10px 12px; border: 0; font-weight: 700; }
+.steps { list-style: none; margin: 0; padding: 0; counter-reset: s; display: grid; }
+.steps li { counter-increment: s; padding-block: 26px; border-top: 1px solid var(--sky-line); display: grid; grid-template-columns: 56px 1fr; gap: 6px 16px; }
+.steps li:last-child { border-bottom: 1px solid var(--sky-line); }
+.steps li::before { content: counter(s); grid-row: span 2; width: 42px; height: 42px; border-radius: 50%; background: var(--yellow); display: grid; place-items: center; font-weight: 800; }
 .steps p { color: var(--muted); }
-@media (max-width: 860px) { .method { grid-template-columns: 1fr; } .method img { position: static; aspect-ratio: 16 / 10; } }
+@media (max-width: 860px) { .method { grid-template-columns: 1fr; } .scene { position: static; } }
+@media (max-width: 420px) { .duo .av { width: 84px; } }
 
 /* Pour qui */
 .who { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 64px; }
-.who div { padding-block: 22px; border-top: 1px solid var(--line); display: grid; grid-template-columns: 1fr 1.3fr; gap: 6px 24px; }
-.who h3 { font-size: 1.12rem; }
-.who p { color: var(--muted); font-size: 0.98rem; }
-.who .first h3::after { content: "Priorité"; display: table; margin-top: 6px; font-size: 0.75rem; font-weight: 600; color: var(--brand); background: var(--brand-soft); padding: 3px 8px; border-radius: 4px; letter-spacing: 0; }
+.who > div { padding-block: 22px; border-top: 1px solid var(--sky-line); display: grid; grid-template-columns: 56px 1fr 1.3fr; gap: 6px 18px; align-items: start; }
+.who .av { width: 56px; border-width: 3px; }
+.who h3 { font-size: 1.12rem; padding-top: 4px; }
+.who p { color: var(--muted); font-size: 0.98rem; padding-top: 4px; }
+.prio { display: table; margin-top: 6px; font-size: 0.75rem; font-weight: 700; background: var(--yellow); padding: 3px 8px; border-radius: 4px; letter-spacing: 0; }
 @media (max-width: 900px) { .who { grid-template-columns: 1fr; } }
-@media (max-width: 560px) { .who div { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .who > div { grid-template-columns: 56px 1fr; } .who p { grid-column: 2; padding-top: 0; } }
 
 /* Tarifs */
-.tabs { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; padding: 4px; gap: 4px; margin-bottom: 28px; background: var(--bg); max-width: 100%; }
-.tabs button { min-height: 42px; padding: 0 18px; border: 0; border-radius: 5px; background: transparent; color: var(--muted); font: 600 0.95rem/1 var(--font); cursor: pointer; transition: background-color .2s, color .2s; }
-.tabs button[aria-selected="true"] { background: var(--ink); color: var(--bg); }
-.plans { display: grid; grid-template-columns: repeat(3, 1fr); background: var(--bg); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
-.plan { padding: 32px 28px; display: grid; grid-template-rows: auto auto 1fr auto; gap: 20px; border-left: 1px solid var(--line); min-width: 0; }
-.plan:first-child { border-left: 0; }
-.plan.main { box-shadow: inset 0 4px 0 var(--brand); }
+.tabs { display: inline-flex; border: 2px solid var(--ink); border-radius: 10px; padding: 4px; gap: 4px; margin-bottom: 28px; background: var(--white); max-width: 100%; }
+.tabs button { min-height: 42px; padding: 0 18px; border: 0; border-radius: 6px; background: transparent; color: var(--muted); font: 700 0.95rem/1 var(--font); cursor: pointer; transition: background-color .2s; }
+.tabs button[aria-selected="true"] { background: var(--sky); color: var(--ink); }
+.plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; }
+.plan { background: var(--white); border: 2px solid var(--ink); border-radius: 16px; padding: 32px 28px; display: grid; grid-template-rows: auto auto 1fr auto; gap: 20px; min-width: 0; position: relative; }
+.plan.main { background: var(--sky); box-shadow: 8px 8px 0 var(--yellow); }
+.badge { position: absolute; top: -15px; left: 24px; background: var(--yellow); border: 2px solid var(--ink); border-radius: 999px; padding: 4px 12px; font-size: 0.8rem; font-weight: 700; }
 .plan h3 { font-size: 1.5rem; }
 .plan .for { color: var(--muted); font-size: 0.95rem; margin-top: 4px; }
-.price { font-size: clamp(1.5rem, 2.4vw, 1.9rem); font-weight: 700; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; line-height: 1.15; }
-.price small { display: block; font-size: 0.88rem; font-weight: 400; color: var(--muted); letter-spacing: 0; margin-top: 4px; }
-.plan ul { list-style: none; margin: 0; padding: 18px 0 0; border-top: 1px solid var(--line); display: grid; gap: 8px; font-size: 0.98rem; }
+.plan.main .for, .plan.main .price small { color: var(--ink); }
+.price { font-size: clamp(1.5rem, 2.4vw, 1.9rem); font-weight: 800; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; line-height: 1.15; }
+.price small { display: block; font-size: 0.88rem; font-weight: 500; color: var(--muted); letter-spacing: 0; margin-top: 4px; }
+.plan ul { list-style: none; margin: 0; padding: 18px 0 0; border-top: 2px dashed var(--sky-line); display: grid; gap: 8px; font-size: 0.98rem; }
+.plan.main ul { border-top-color: color-mix(in srgb, var(--ink) 25%, transparent); }
 .plan li { padding-left: 24px; position: relative; }
-.plan li::before { content: ""; position: absolute; left: 2px; top: 0.45em; width: 10px; height: 5px; border-left: 1.5px solid var(--brand); border-bottom: 1.5px solid var(--brand); transform: rotate(-45deg); }
+.plan li::before { content: ""; position: absolute; left: 2px; top: 0.42em; width: 11px; height: 6px; border-left: 2.5px solid var(--ink); border-bottom: 2.5px solid var(--ink); transform: rotate(-45deg); }
 .plan .btn { width: 100%; }
-@media (max-width: 960px) { .plans { grid-template-columns: 1fr; } .plan { border-left: 0; border-top: 1px solid var(--line); } .plan:first-child { border-top: 0; } }
+.plan:not(.main) .btn { background: var(--yellow-soft); }
+.plan:not(.main) .btn:hover { background: var(--yellow); }
+@media (max-width: 960px) { .plans { grid-template-columns: 1fr; max-width: 520px; gap: 28px; } }
 
-.table { background: var(--bg); border: 1px solid var(--line); border-radius: 10px; overflow-x: auto; }
+.table { background: var(--white); border: 2px solid var(--ink); border-radius: 16px; overflow-x: auto; }
 .table table { width: 100%; border-collapse: collapse; min-width: 480px; }
-.table th, .table td { padding: 16px 24px; text-align: left; border-bottom: 1px solid var(--line); }
+.table th, .table td { padding: 16px 24px; text-align: left; border-bottom: 1px solid var(--sky-line); }
 .table tr:last-child td { border-bottom: 0; }
-.table th { font-size: 0.88rem; font-weight: 600; color: var(--muted); }
+.table th { font-size: 0.88rem; font-weight: 700; background: var(--yellow); }
 .table td:last-child, .table th:last-child { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
-.table td:last-child { font-weight: 600; }
-.small-print { margin-top: 22px; color: var(--muted); font-size: 0.95rem; max-width: 72ch; }
-
-/* Bandeau photo */
-.band-photo { position: relative; }
-.band-photo img { width: 100%; height: clamp(280px, 42vw, 520px); object-fit: cover; background: var(--line); }
-.band-photo figcaption { position: absolute; right: max(20px, env(safe-area-inset-right, 0px)); bottom: 16px; color: #fff; font-size: 0.85rem; text-shadow: 0 1px 6px rgb(0 0 0 / .6); }
+.table td:last-child { font-weight: 700; }
+.small-print { margin-top: 26px; color: var(--muted); font-size: 0.95rem; max-width: 72ch; }
 
 /* Academy */
-.academy { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(32px, 6vw, 88px); align-items: center; }
+.academy { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(32px, 6vw, 88px); align-items: center; }
 .academy-text { display: grid; gap: 22px; min-width: 0; }
 .academy-text > p { color: var(--muted); font-size: 1.1rem; max-width: 54ch; }
-.academy dl { margin: 0; display: grid; gap: 0; }
-.academy dl div { padding-block: 16px; border-top: 1px solid var(--line); display: grid; grid-template-columns: 180px 1fr; gap: 4px 20px; }
-.academy dt { font-weight: 600; }
+.academy dl { margin: 0; display: grid; }
+.academy dl div { padding-block: 16px; border-top: 1px solid var(--sky-line); display: grid; grid-template-columns: 180px 1fr; gap: 4px 20px; }
+.academy dt { font-weight: 700; }
 .academy dd { margin: 0; color: var(--muted); }
-.academy img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 8px; background: var(--line); }
-@media (max-width: 900px) { .academy { grid-template-columns: 1fr; } .academy img { aspect-ratio: 16 / 10; order: -1; } }
+.course { background: var(--white); border: 2px solid var(--ink); border-radius: 16px; box-shadow: 8px 8px 0 var(--yellow); overflow: hidden; min-width: 0; }
+.course-head { background: var(--sky); padding: 18px 22px; display: grid; gap: 4px; }
+.course-head small { font-size: 0.78rem; font-weight: 700; }
+.course-head b { font-size: 1.2rem; letter-spacing: -0.01em; }
+.learners { list-style: none; margin: 0; padding: 8px 22px 14px; }
+.learners li { display: grid; grid-template-columns: 48px 1fr auto; gap: 4px 14px; align-items: center; padding-block: 12px; border-bottom: 1px solid var(--sky-soft); }
+.learners li:last-child { border-bottom: 0; }
+.learners .av { width: 48px; border-width: 3px; grid-row: span 2; }
+.learners span { font-weight: 600; font-size: 0.96rem; }
+.learners em { font-style: normal; font-weight: 700; font-size: 0.9rem; font-variant-numeric: tabular-nums; }
+.bar { grid-column: 2 / 4; height: 8px; border-radius: 99px; background: var(--sky-soft); overflow: hidden; }
+.bar i { display: block; height: 100%; background: var(--yellow); border-radius: inherit; }
+.done { font-size: 0.75rem; font-weight: 700; background: var(--yellow); padding: 2px 7px; border-radius: 4px; margin-left: 6px; }
+@media (max-width: 900px) { .academy { grid-template-columns: 1fr; } }
 @media (max-width: 560px) { .academy dl div { grid-template-columns: 1fr; } }
 
 /* Comparatif */
-.vs { display: grid; gap: 0; border-top: 1px solid var(--ink); }
-.vs div { display: grid; grid-template-columns: 1fr 1.2fr 1.2fr; gap: 8px 40px; padding-block: 22px; border-bottom: 1px solid var(--line); }
+.vs { display: grid; border-top: 2px solid var(--ink); }
+.vs > div { display: grid; grid-template-columns: 1fr 1.2fr 1.2fr; gap: 8px 40px; padding-block: 22px; border-bottom: 1px solid var(--sky-line); }
 .vs h3 { font-size: 1.12rem; }
 .vs p { color: var(--muted); }
-.vs p + p { color: var(--ink); }
-.vs .label { font-size: 0.85rem; font-weight: 600; color: var(--muted); padding-block: 12px; }
-@media (max-width: 860px) { .vs div { grid-template-columns: 1fr; } .vs .label { display: none; } .vs p:first-of-type::before { content: "Le souci : "; font-weight: 600; } .vs p + p::before { content: "Chez nous : "; font-weight: 600; color: var(--brand); } }
+.vs p + p { color: var(--ink); font-weight: 500; }
+.vs .label { font-size: 0.85rem; font-weight: 700; color: var(--muted); padding-block: 12px; }
+@media (max-width: 860px) { .vs > div { grid-template-columns: 1fr; } .vs .label-row { display: none; } .vs p:first-of-type::before { content: "Le souci : "; font-weight: 700; } .vs p + p::before { content: "Chez nous : "; font-weight: 700; background: var(--yellow); padding: 0 4px; border-radius: 3px; } }
 
 /* Pilotes */
-.pilot { background: var(--ink); color: var(--bg); border-radius: 12px; padding: clamp(32px, 5vw, 56px); display: grid; grid-template-columns: 1.4fr 1fr; gap: 28px 56px; align-items: center; }
+.pilot { background: var(--sky); border: 2px solid var(--ink); border-radius: 20px; padding: clamp(32px, 5vw, 56px); display: grid; grid-template-columns: auto 1.4fr 1fr; gap: 28px 48px; align-items: center; position: relative; overflow: hidden; }
+.pilot::after { content: ""; position: absolute; width: 300px; height: 300px; border-radius: 50%; background: var(--yellow); right: -110px; top: -140px; }
+.pilot > * { position: relative; z-index: 1; }
+.trio { display: flex; }
+.trio .av { width: 76px; }
+.trio .av + .av { margin-left: -22px; }
 .pilot h2 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); }
-.pilot p { color: color-mix(in srgb, var(--bg) 72%, transparent); margin-top: 14px; max-width: 54ch; }
-.pilot .btn-primary { justify-self: start; }
-@media (max-width: 860px) { .pilot { grid-template-columns: 1fr; } }
+.pilot p { margin-top: 14px; max-width: 54ch; }
+.pilot .btn { justify-self: start; }
+@media (max-width: 960px) { .pilot { grid-template-columns: 1fr; } .pilot::after { width: 200px; height: 200px; right: -80px; top: -100px; } }
 
 /* Contact */
 .contact { display: grid; grid-template-columns: 1fr 1.15fr; gap: clamp(36px, 6vw, 88px); align-items: start; }
 .contact-text { display: grid; gap: 22px; min-width: 0; }
 .contact-text > p { color: var(--muted); font-size: 1.1rem; max-width: 46ch; }
 .coords { margin: 8px 0 0; display: grid; }
-.coords div { display: grid; grid-template-columns: 110px 1fr; gap: 16px; padding-block: 14px; border-top: 1px solid var(--line); }
+.coords div { display: grid; grid-template-columns: 110px 1fr; gap: 16px; padding-block: 14px; border-top: 1px solid var(--sky-line); }
 .coords dt { color: var(--muted); font-size: 0.95rem; }
-.coords dd { margin: 0; font-weight: 500; overflow-wrap: anywhere; }
-.coords .todo { color: var(--muted); font-weight: 400; font-style: italic; }
-form { display: grid; gap: 18px; background: var(--soft); border-radius: 12px; padding: clamp(22px, 3.5vw, 40px); min-width: 0; }
+.coords dd { margin: 0; font-weight: 600; overflow-wrap: anywhere; }
+form { display: grid; gap: 18px; background: var(--sky-soft); border: 2px solid var(--ink); border-radius: 16px; padding: clamp(22px, 3.5vw, 40px); min-width: 0; }
 .row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 @media (max-width: 560px) { .row { grid-template-columns: 1fr; } }
-label { display: grid; gap: 7px; font-size: 0.92rem; font-weight: 600; min-width: 0; }
-label i { font-style: normal; color: var(--brand); }
-input, select, textarea { width: 100%; min-height: 48px; padding: 12px 14px; font: 400 1rem/1.4 var(--font); color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; transition: border-color .2s, box-shadow .2s; }
-input:focus, select:focus, textarea:focus { outline: none; border-color: var(--ink); box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand) 22%, transparent); }
+label { display: grid; gap: 7px; font-size: 0.92rem; font-weight: 700; min-width: 0; }
+label i { font-style: normal; }
+input, select, textarea { width: 100%; min-height: 48px; padding: 12px 14px; font: 400 1rem/1.4 var(--font); color: var(--ink); background: var(--white); border: 1.5px solid var(--sky-line); border-radius: 8px; transition: border-color .2s, box-shadow .2s; }
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--ink); box-shadow: 0 0 0 3px var(--yellow); }
 textarea { min-height: 130px; resize: vertical; }
-.err { color: var(--brand); font-size: 0.85rem; font-weight: 500; min-height: 0; }
+.err { font-size: 0.85rem; font-weight: 600; }
+.err:empty { display: none; }
+.err:not(:empty) { background: var(--yellow-soft); padding: 4px 8px; border-radius: 4px; }
 .form-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
 .form-foot p { color: var(--muted); font-size: 0.9rem; }
-.result { display: grid; gap: 14px; padding: 18px; border-radius: 8px; background: var(--bg); border: 1px solid var(--line); }
+.result { display: grid; gap: 14px; padding: 18px; border-radius: 10px; background: var(--white); border: 1.5px solid var(--sky-line); }
 .result pre { margin: 0; white-space: pre-wrap; font: 400 0.95rem/1.55 var(--font); }
 .result div { display: flex; flex-wrap: wrap; gap: 10px; }
 @media (max-width: 900px) { .contact { grid-template-columns: 1fr; } }
 
 /* Pied de page */
-footer { border-top: 1px solid var(--line); padding-block: 40px calc(40px + env(safe-area-inset-bottom, 0px)); color: var(--muted); font-size: 0.92rem; }
+footer { background: var(--sky-soft); border-top: 2px solid var(--ink); padding-block: 40px calc(40px + env(safe-area-inset-bottom, 0px)); color: var(--muted); font-size: 0.92rem; }
 footer .wrap { display: flex; flex-wrap: wrap; gap: 16px 40px; align-items: center; justify-content: space-between; }
 footer nav { display: flex; flex-wrap: wrap; gap: 8px 24px; }
 footer a { text-decoration: none; }
 footer a:hover { color: var(--ink); }
 
-/* Habillage bleu et jaune */
-body::before { background: var(--blue); }
-.btn-primary { background: var(--yellow); color: var(--on-yellow); }
-.btn-primary:hover { background: color-mix(in srgb, var(--yellow) 88%, #000); }
-.btn-dark { background: var(--blue); color: var(--on-blue); }
-.btn-dark:hover { background: var(--brand); color: var(--brand-ink); }
-:focus-visible { outline-color: var(--yellow); }
-
-.top { background: color-mix(in srgb, var(--blue) 96%, transparent); border-bottom-color: color-mix(in srgb, var(--on-blue) 12%, transparent); color: var(--on-blue); }
-.top .logo-sub { color: color-mix(in srgb, var(--on-blue) 70%, transparent); }
-.top .menu a { color: color-mix(in srgb, var(--on-blue) 78%, transparent); }
-.top .menu a:hover { color: var(--yellow); }
-.logo-mark { background: var(--yellow); color: var(--on-yellow); }
-
-.hero { background: radial-gradient(90% 120% at 100% 0%, #1B47B8 0%, var(--blue) 45%, var(--blue-deep) 100%); color: var(--on-blue); overflow: hidden; padding-bottom: clamp(72px, 9vw, 112px); }
-.hero h1 span { color: var(--yellow); background: linear-gradient(var(--yellow), var(--yellow)) left 100% / 0% 0.09em no-repeat; padding-bottom: 0.04em; animation: underline .9s .35s var(--ease) forwards; }
-@keyframes underline { to { background-size: 100% 0.09em; } }
-.hero-text > p { color: color-mix(in srgb, var(--on-blue) 82%, transparent); }
-.hero .btn-outline { color: var(--on-blue); border-color: color-mix(in srgb, var(--on-blue) 40%, transparent); }
-.hero .btn-outline:hover { border-color: var(--on-blue); }
-.hero-photo { isolation: isolate; }
-.hero-photo::before { content: ""; position: absolute; inset: 28px -28px -28px 28px; background: var(--yellow); border-radius: 10px; z-index: -1; }
-.hero-note { background: var(--bg); color: var(--ink); }
-@media (max-width: 900px) { .hero-photo::before { inset: 16px -12px -16px 16px; } }
-
-.facts { background: var(--yellow); color: var(--on-yellow); border: 0; }
-.facts p { color: color-mix(in srgb, var(--on-yellow) 74%, transparent); border-color: color-mix(in srgb, var(--on-yellow) 18%, transparent) !important; }
-.facts b { color: var(--on-yellow); }
-
-.tabs button[aria-selected="true"] { background: var(--blue); color: var(--on-blue); }
-.plan.main { background: var(--blue); color: var(--on-blue); box-shadow: none; position: relative; }
-.plan.main::before { content: "Notre formule pour les PME"; position: absolute; top: 0; right: 0; background: var(--yellow); color: var(--on-yellow); font-size: 0.78rem; font-weight: 700; padding: 6px 12px; border-bottom-left-radius: 8px; }
-.plan.main .for, .plan.main .price small { color: color-mix(in srgb, var(--on-blue) 72%, transparent); }
-.plan.main ul { border-top-color: color-mix(in srgb, var(--on-blue) 18%, transparent); }
-.plan.main li::before { border-color: var(--yellow); }
-
-.pilot { background: var(--blue); color: var(--on-blue); position: relative; overflow: hidden; }
-.pilot::after { content: ""; position: absolute; width: 340px; height: 340px; border-radius: 50%; background: var(--yellow); right: -120px; top: -150px; opacity: .95; }
-.pilot > * { position: relative; z-index: 1; }
-.pilot p { color: color-mix(in srgb, var(--on-blue) 78%, transparent); }
-@media (max-width: 860px) { .pilot::after { width: 200px; height: 200px; right: -80px; top: -110px; } }
-
-footer { background: var(--blue-deep); color: color-mix(in srgb, var(--on-blue) 72%, transparent); border-top: 0; }
-footer .logo b { color: var(--on-blue); }
-footer .logo-sub { color: color-mix(in srgb, var(--on-blue) 70%, transparent); }
-footer a:hover { color: var(--yellow); }
-
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } .hero h1 span { background-size: 100% 0.09em; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } .hero h1 .mark { background-size: 100% 42%; } }
 </style>
 </head>
 <body>
@@ -311,17 +292,23 @@ footer a:hover { color: var(--yellow); }
   <section class="hero">
     <div class="wrap">
       <div class="hero-text">
-        <h1>Le numérique pour votre entreprise, <span>sans jargon</span> et payable en FCFA.</h1>
+        <h1>Le numérique pour votre entreprise, <span class="mark">sans jargon</span> et payable en FCFA.</h1>
         <p>Nous accompagnons les PME, les ONG et les institutions du Sénégal : informatique, communication, formation. Un seul interlocuteur du début à la fin. Et après chaque mission, vos équipes apprennent à se débrouiller sans nous.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#contact">Demander un premier rendez-vous <span class="arrow" aria-hidden="true">→</span></a>
           <a class="btn btn-outline" href="#tarifs">Voir les tarifs</a>
         </div>
       </div>
-      <figure class="hero-photo" style="margin:0">
-        <img src="https://images.unsplash.com/photo-1653566031587-114b636e182b?w=1100&q=80&auto=format&fit=crop" srcset="https://images.unsplash.com/photo-1653566031587-114b636e182b?w=700&q=80&auto=format&fit=crop 700w, https://images.unsplash.com/photo-1653566031587-114b636e182b?w=1100&q=80&auto=format&fit=crop 1100w" sizes="(max-width: 900px) 100vw, 48vw" width="1100" height="1375" alt="Trois collègues penchés sur un ordinateur portable dans un bureau lumineux" fetchpriority="high">
-        <figcaption class="hero-note"><small>Abonnement mensuel à partir de</small><strong>75 000 FCFA</strong><small>HT, réglable par Wave ou Orange Money</small></figcaption>
-      </figure>
+      <div class="collage" role="img" aria-label="Illustration : des personnages dessinés, avec le prix de départ de 75 000 FCFA par mois">
+        <div class="blob"></div>
+        <img class="av y c1" src="https://api.dicebear.com/9.x/notionists/svg?seed=Aminata&backgroundColor=ffd23f" width="220" height="220" alt="">
+        <img class="av c2" src="https://api.dicebear.com/9.x/notionists/svg?seed=Ibrahima&backgroundColor=e8f6ff" width="160" height="160" alt="">
+        <img class="av c3" src="https://api.dicebear.com/9.x/notionists/svg?seed=Coumba&backgroundColor=e8f6ff" width="140" height="140" alt="">
+        <img class="av y c4" src="https://api.dicebear.com/9.x/notionists/svg?seed=Ousmane&backgroundColor=ffd23f" width="190" height="190" alt="">
+        <img class="av c5" src="https://api.dicebear.com/9.x/notionists/svg?seed=Babacar&backgroundColor=e8f6ff" width="120" height="120" alt="">
+        <span class="tag t1">À partir de<b>75 000 FCFA / mois</b></span>
+        <span class="tag t2">Wave · Orange Money</span>
+      </div>
     </div>
   </section>
 
@@ -342,37 +329,19 @@ footer a:hover { color: var(--yellow); }
       </div>
       <div class="services">
         <article class="service">
-          <h3>Informatique</h3>
+          <h3><span aria-hidden="true"></span>Informatique</h3>
           <p>Un site qui fonctionne, une messagerie professionnelle, des ordinateurs à jour et protégés. Et quelqu'un à appeler quand ça coince.</p>
-          <ul>
-            <li>Audit de vos outils</li>
-            <li>Sites web et applications</li>
-            <li>Google Workspace, Microsoft 365</li>
-            <li>Sécurité de base, sauvegardes</li>
-            <li>Maintenance au mois</li>
-          </ul>
+          <ul><li>Audit de vos outils</li><li>Sites web et applications</li><li>Google Workspace, Microsoft 365</li><li>Sécurité de base, sauvegardes</li><li>Maintenance au mois</li></ul>
         </article>
         <article class="service">
-          <h3>Communication</h3>
+          <h3><span aria-hidden="true"></span>Communication</h3>
           <p>Une image claire et des réseaux sociaux tenus chaque semaine, pas seulement le mois du lancement. On vous envoie un rapport tous les mois.</p>
-          <ul>
-            <li>Logo et charte graphique</li>
-            <li>Facebook, Instagram, LinkedIn, TikTok</li>
-            <li>Publicité Meta et Google</li>
-            <li>Relations presse</li>
-            <li>Photo et vidéo</li>
-          </ul>
+          <ul><li>Logo et charte graphique</li><li>Facebook, Instagram, LinkedIn, TikTok</li><li>Publicité Meta et Google</li><li>Relations presse</li><li>Photo et vidéo</li></ul>
         </article>
         <article class="service">
-          <h3>Formation</h3>
+          <h3><span aria-hidden="true"></span>Formation</h3>
           <p>En salle chez vous, en ligne sur Teranga Academy, ou un mélange des deux. Chaque participant reçoit une attestation.</p>
-          <ul>
-            <li>Bureautique et outils numériques</li>
-            <li>Marketing digital</li>
-            <li>Gestion de projet</li>
-            <li>Formations sur mesure</li>
-            <li>Séminaires inter-entreprises</li>
-          </ul>
+          <ul><li>Bureautique et outils numériques</li><li>Marketing digital</li><li>Gestion de projet</li><li>Formations sur mesure</li><li>Séminaires inter-entreprises</li></ul>
         </article>
       </div>
     </div>
@@ -380,7 +349,22 @@ footer a:hover { color: var(--yellow); }
 
   <section class="section soft" id="mission">
     <div class="wrap method">
-      <img src="https://images.unsplash.com/photo-1653566031486-dc4ead13a35d?w=1000&q=80&auto=format&fit=crop" width="1000" height="1000" loading="lazy" alt="Réunion de travail autour d'une table avec des ordinateurs portables">
+      <div class="scene" aria-label="Exemple de rapport remis après le premier rendez-vous">
+        <div class="duo">
+          <img class="av y" src="https://api.dicebear.com/9.x/notionists/svg?seed=Lamine&backgroundColor=ffd23f" width="112" height="112" alt="">
+          <p class="bubble">Voici ce qu'on vous propose de faire en premier.</p>
+        </div>
+        <div class="report">
+          <div class="report-head"><b>Rapport de diagnostic</b><small>Exemple</small></div>
+          <ul>
+            <li><span>Site web</span><span>À refaire, 5 pages</span></li>
+            <li><span>Messagerie pro</span><span>À installer</span></li>
+            <li><span>Réseaux sociaux</span><span>2 posts par semaine</span></li>
+            <li><span>Formation</span><span>1 journée + cours en ligne</span></li>
+            <li class="total"><span>Budget estimé</span><span>850 000 FCFA HT</span></li>
+          </ul>
+        </div>
+      </div>
       <div>
         <span class="kicker">Comment ça se passe</span>
         <h2 style="margin-bottom:32px">Une mission, étape par étape</h2>
@@ -401,12 +385,12 @@ footer a:hover { color: var(--yellow); }
         <p>Les grandes entreprises ont déjà leurs prestataires. Les PME, elles, trouvent soit des offres trop chères, soit des freelances qui disparaissent après la livraison. C'est pour elles que nous avons construit nos formules.</p>
       </div>
       <div class="who">
-        <div class="first"><h3>PME et commerces</h3><p>Site web, réseaux sociaux, outils de gestion, formation du personnel.</p></div>
-        <div class="first"><h3>Entrepreneurs et startups</h3><p>Une marque, un lancement en ligne, quelqu'un pour vous conseiller.</p></div>
-        <div><h3>ONG et projets</h3><p>Communication institutionnelle, renforcement de capacités, plateformes de formation.</p></div>
-        <div><h3>Institutions et collectivités</h3><p>Services en ligne pour les usagers, formation des agents.</p></div>
-        <div><h3>Écoles et centres de formation</h3><p>Passage au e-learning, formation des formateurs.</p></div>
-        <div><h3>Particuliers</h3><p>Cours certifiants sur Teranga Academy pour changer de métier.</p></div>
+        <div><img class="av y" src="https://api.dicebear.com/9.x/notionists/svg?seed=Mariama&backgroundColor=ffd23f" width="56" height="56" alt=""><h3>PME et commerces<span class="prio">Priorité</span></h3><p>Site web, réseaux sociaux, outils de gestion, formation du personnel.</p></div>
+        <div><img class="av y" src="https://api.dicebear.com/9.x/notionists/svg?seed=Moussa&backgroundColor=ffd23f" width="56" height="56" alt=""><h3>Entrepreneurs et startups<span class="prio">Priorité</span></h3><p>Une marque, un lancement en ligne, quelqu'un pour vous conseiller.</p></div>
+        <div><img class="av" src="https://api.dicebear.com/9.x/notionists/svg?seed=Aminata&backgroundColor=e8f6ff" width="56" height="56" alt=""><h3>ONG et projets</h3><p>Communication institutionnelle, renforcement de capacités, plateformes de formation.</p></div>
+        <div><img class="av" src="https://api.dicebear.com/9.x/notionists/svg?seed=Ibrahima&backgroundColor=e8f6ff" width="56" height="56" alt=""><h3>Institutions et collectivités</h3><p>Services en ligne pour les usagers, formation des agents.</p></div>
+        <div><img class="av" src="https://api.dicebear.com/9.x/notionists/svg?seed=Coumba&backgroundColor=e8f6ff" width="56" height="56" alt=""><h3>Écoles et centres de formation</h3><p>Passage au e-learning, formation des formateurs.</p></div>
+        <div><img class="av" src="https://api.dicebear.com/9.x/notionists/svg?seed=Babacar&backgroundColor=e8f6ff" width="56" height="56" alt=""><h3>Particuliers</h3><p>Cours certifiants sur Teranga Academy pour changer de métier.</p></div>
       </div>
     </div>
   </section>
@@ -429,9 +413,10 @@ footer a:hover { color: var(--yellow); }
             <div><h3>Démarrage</h3><p class="for">Commerces, entrepreneurs</p></div>
             <p class="price">75 000 à 125 000<small>FCFA HT par mois</small></p>
             <ul><li>2 réseaux sociaux gérés</li><li>8 publications par mois</li><li>Maintenance du site</li><li>1 cours Teranga Academy</li></ul>
-            <a class="btn btn-outline" href="#contact" data-need="Formule Démarrage">Demander un devis</a>
+            <a class="btn" href="#contact" data-need="Formule Démarrage">Demander un devis</a>
           </article>
           <article class="plan main">
+            <span class="badge">Notre formule pour les PME</span>
             <div><h3>Croissance</h3><p class="for">PME de 10 à 50 personnes</p></div>
             <p class="price">200 000 à 350 000<small>FCFA HT par mois</small></p>
             <ul><li>3 réseaux sociaux gérés</li><li>16 publications par mois</li><li>Publicité en ligne (budget média à part)</li><li>Support informatique</li><li>5 accès Teranga Academy</li></ul>
@@ -441,7 +426,7 @@ footer a:hover { color: var(--yellow); }
             <div><h3>Partenaire</h3><p class="for">PME structurées, ONG, institutions</p></div>
             <p class="price">500 000 à 900 000<small>FCFA HT par mois</small></p>
             <ul><li>Toute votre communication</li><li>Infogérance</li><li>1 journée de formation par mois</li><li>Teranga Academy pour toute l'équipe</li></ul>
-            <a class="btn btn-outline" href="#contact" data-need="Formule Partenaire">Demander un devis</a>
+            <a class="btn" href="#contact" data-need="Formule Partenaire">Demander un devis</a>
           </article>
         </div>
       </div>
@@ -468,15 +453,10 @@ footer a:hover { color: var(--yellow); }
     </div>
   </section>
 
-  <figure class="band-photo" style="margin:0">
-    <img src="https://images.unsplash.com/photo-1611258490565-4a06c019e631?w=2000&q=75&auto=format&fit=crop" srcset="https://images.unsplash.com/photo-1611258490565-4a06c019e631?w=900&q=75&auto=format&fit=crop 900w, https://images.unsplash.com/photo-1611258490565-4a06c019e631?w=2000&q=75&auto=format&fit=crop 2000w" sizes="100vw" width="2000" height="1000" loading="lazy" alt="La mosquée de la Divinité à Ouakam, au bord de l'océan, à Dakar">
-    <figcaption>Ouakam, Dakar</figcaption>
-  </figure>
-
   <section class="section" id="academy">
     <div class="wrap academy">
       <div class="academy-text">
-        <span class="kicker" style="margin:0">Teranga Academy</span>
+        <span class="kicker" style="margin:0;justify-self:start">Teranga Academy</span>
         <h2>La formation continue après notre départ</h2>
         <p>Teranga Academy est notre plateforme de cours en ligne. Quand nous installons un outil chez vous, vos employés trouvent le cours qui va avec et le suivent à leur rythme, sur ordinateur ou sur téléphone.</p>
         <dl>
@@ -485,9 +465,17 @@ footer a:hover { color: var(--yellow); }
           <div><dt>Prix en FCFA</dt><dd>Pas de paiement en dollars ni en euros. Wave et Orange Money acceptés.</dd></div>
           <div><dt>Ouvert à tous</dt><dd>Les particuliers peuvent aussi s'inscrire aux cours certifiants.</dd></div>
         </dl>
-        <div><a class="btn btn-dark" href="#contact" data-need="Teranga Academy">Former mon équipe</a></div>
+        <div><a class="btn btn-sky" href="#contact" data-need="Teranga Academy">Former mon équipe</a></div>
       </div>
-      <img src="https://images.unsplash.com/photo-1694286067026-a8aa654481f7?w=1000&q=80&auto=format&fit=crop" width="1000" height="1250" loading="lazy" alt="Une formatrice s'adresse à un groupe de participants assis">
+      <div class="course" aria-label="Exemple d'espace entreprise sur Teranga Academy">
+        <div class="course-head"><small>Espace entreprise · exemple</small><b>Google Workspace pour toute l'équipe</b></div>
+        <ul class="learners">
+          <li><img class="av y" src="https://api.dicebear.com/9.x/notionists/svg?seed=Aminata&backgroundColor=ffd23f" width="48" height="48" alt=""><span>Awa<span class="done">Attestation</span></span><em>100 %</em><span class="bar"><i style="width:100%"></i></span></li>
+          <li><img class="av" src="https://api.dicebear.com/9.x/notionists/svg?seed=Moussa&backgroundColor=e8f6ff" width="48" height="48" alt=""><span>Moussa</span><em>72 %</em><span class="bar"><i style="width:72%"></i></span></li>
+          <li><img class="av y" src="https://api.dicebear.com/9.x/notionists/svg?seed=Coumba&backgroundColor=ffd23f" width="48" height="48" alt=""><span>Coumba</span><em>45 %</em><span class="bar"><i style="width:45%"></i></span></li>
+          <li><img class="av" src="https://api.dicebear.com/9.x/notionists/svg?seed=Lamine&backgroundColor=e8f6ff" width="48" height="48" alt=""><span>Lamine</span><em>20 %</em><span class="bar"><i style="width:20%"></i></span></li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -511,6 +499,11 @@ footer a:hover { color: var(--yellow); }
   <section class="section" style="padding-bottom:0">
     <div class="wrap">
       <div class="pilot">
+        <div class="trio" aria-hidden="true">
+          <img class="av y" src="https://api.dicebear.com/9.x/notionists/svg?seed=Mariama&backgroundColor=ffd23f" width="76" height="76" alt="">
+          <img class="av" src="https://api.dicebear.com/9.x/notionists/svg?seed=Ousmane&backgroundColor=e8f6ff" width="76" height="76" alt="">
+          <img class="av y" src="https://api.dicebear.com/9.x/notionists/svg?seed=Ibrahima&backgroundColor=ffd23f" width="76" height="76" alt="">
+        </div>
         <div>
           <h2>Nous cherchons nos trois premiers clients</h2>
           <p>Nous démarrons. Les trois premières structures qui nous font confiance ont un tarif réduit sur leur première mission. En échange, nous vous demandons un avis que nous pourrons citer.</p>
@@ -523,7 +516,7 @@ footer a:hover { color: var(--yellow); }
   <section class="section" id="contact">
     <div class="wrap contact">
       <div class="contact-text">
-        <span class="kicker" style="margin:0">Contact</span>
+        <span class="kicker" style="margin:0;justify-self:start">Contact</span>
         <h2>Parlez-nous de votre projet</h2>
         <p>Quelques lignes suffisent. Nous vous répondons avec une première analyse et, si vous le voulez, une date de rendez-vous.</p>
         <dl class="coords" id="coords"></dl>
@@ -568,7 +561,7 @@ footer a:hover { color: var(--yellow); }
   <div class="wrap">
     <a class="logo" href="#"><span class="logo-mark" aria-hidden="true">T</span><b>Teranga</b><span class="logo-sub">Consulting</span></a>
     <nav aria-label="Pied de page"><a href="#services">Services</a><a href="#tarifs">Tarifs</a><a href="#academy">Teranga Academy</a><a href="#contact">Contact</a></nav>
-    <p>© <span id="year">2026</span> Teranga Consulting · Dakar · Photos : Unsplash</p>
+    <p>© <span id="year">2026</span> Teranga Consulting · Dakar · Illustrations : DiceBear (Notionists)</p>
   </div>
 </footer>
 

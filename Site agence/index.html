@@ -1,578 +1,492 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Teranga Consulting</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Teranga Consulting : informatique, communication et formation pour les PME, ONG et institutions du Sénégal. Paiement en FCFA, Wave et Orange Money.">
+<meta name="description" content="Teranga Consulting accompagne les PME, ONG et institutions du Sénégal : informatique, communication et formation. Prix en FCFA, paiement Wave et Orange Money.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,600;0,6..96,700;1,6..96,500;1,6..96,600&family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap">
 <style>
-/* Layout : une page en bandes pleine largeur ; héros bissap avec motif de pagne tissé or ; conteneur 1160px ; prix en FCFA en chasse fixe */
+/* Mise en page : éditoriale, alignée à gauche, photos réelles en grand, peu d'ornements. Une seule couleur de marque (bissap), le reste en noir et blanc. */
 :root {
-  --bg: #FAF7F8;
-  --surface: #FFFFFF;
-  --ink: #24121B;
-  --muted: #6D5862;
-  --line: #EADFE4;
-  --band: #F3ECEF;
-  --bissap: #6B1A3B;
-  --bissap-deep: #4E1029;
-  --bissap-ink: #FBF2F6;
-  --gold: #C4932F;
-  --gold-soft: #F5E8CB;
-  --gold-ink: #2A1A06;
-  --leaf: #1E6A55;
-  --f-display: "Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
-  --f-body: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
-  --r: 18px;
-  --shadow: 0 1px 2px rgb(60 15 35 / .06), 0 12px 32px -12px rgb(60 15 35 / .18);
+  --bg: #FFFFFF;
+  --soft: #F5F3F1;
+  --ink: #161314;
+  --muted: #5F5759;
+  --line: #E4DFDD;
+  --brand: #7A1F43;
+  --brand-ink: #FFFFFF;
+  --brand-soft: #F6E9EE;
+  --font: "Schibsted Grotesk", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #150B10; --surface: #1F1218; --ink: #F4EAEF; --muted: #BBA5B0; --line: #3A2430; --band: #1A0F15;
-    --bissap: #561431; --bissap-deep: #3D0C22; --bissap-ink: #F8EDF2;
-    --gold: #E2B45B; --gold-soft: #3B2C12; --gold-ink: #241604; --leaf: #5EC3A5;
-    --shadow: 0 1px 2px rgb(0 0 0 / .3), 0 14px 36px -14px rgb(0 0 0 / .6);
+    --bg: #121011; --soft: #1B1819; --ink: #F2EDEE; --muted: #ABA1A4; --line: #2E292B;
+    --brand: #D9779E; --brand-ink: #1A0B11; --brand-soft: #2A1820;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #150B10; --surface: #1F1218; --ink: #F4EAEF; --muted: #BBA5B0; --line: #3A2430; --band: #1A0F15;
-  --bissap: #561431; --bissap-deep: #3D0C22; --bissap-ink: #F8EDF2;
-  --gold: #E2B45B; --gold-soft: #3B2C12; --gold-ink: #241604; --leaf: #5EC3A5;
-  --shadow: 0 1px 2px rgb(0 0 0 / .3), 0 14px 36px -14px rgb(0 0 0 / .6);
+  --bg: #121011; --soft: #1B1819; --ink: #F2EDEE; --muted: #ABA1A4; --line: #2E292B;
+  --brand: #D9779E; --brand-ink: #1A0B11; --brand-soft: #2A1820;
   color-scheme: dark;
 }
 
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
-body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bissap-deep); }
-h1, h2, h3 { font-family: var(--f-display); font-weight: 600; line-height: 1.08; margin: 0; text-wrap: balance; }
-h2 { font-size: clamp(2rem, 4.4vw, 3.1rem); letter-spacing: -0.01em; }
-h3 { font-size: 1.45rem; }
-h1 em, h2 em { font-style: italic; font-weight: 500; color: var(--gold); }
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 1.0625rem/1.6 var(--font); -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+img { max-width: 100%; height: auto; display: block; }
+h1, h2, h3 { margin: 0; line-height: 1.05; letter-spacing: -0.025em; font-weight: 700; text-wrap: balance; }
+h2 { font-size: clamp(2rem, 4.2vw, 3.25rem); }
+h3 { font-size: 1.3rem; letter-spacing: -0.01em; line-height: 1.25; }
 p { margin: 0; }
 a { color: inherit; }
-:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 6px; }
+:focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; }
+.skip { position: absolute; left: -9999px; }
+.skip:focus { left: 16px; top: 16px; z-index: 50; background: var(--ink); color: var(--bg); padding: 10px 14px; }
 
-.wrap { max-width: 1160px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
-.section { padding-block: clamp(72px, 10vw, 128px); }
-.band { background: var(--band); }
-.eyebrow { font-family: var(--f-mono); font-size: 0.76rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--bissap); display: inline-flex; align-items: center; gap: 10px; }
-.eyebrow::before { content: ""; width: 28px; height: 1px; background: currentColor; }
-:root[data-theme="dark"] .eyebrow { color: var(--gold); }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .eyebrow { color: var(--gold); } }
-.lede { color: var(--muted); font-size: 1.14rem; max-width: 60ch; }
-.head { display: grid; gap: 18px; margin-bottom: clamp(40px, 6vw, 64px); max-width: 760px; }
-.mono { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+.wrap { max-width: 1200px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+.section { padding-block: clamp(72px, 9vw, 120px); }
+.soft { background: var(--soft); }
+.kicker { font-size: 0.95rem; font-weight: 600; color: var(--brand); margin-bottom: 14px; display: block; }
+.intro { display: grid; grid-template-columns: 5fr 6fr; gap: 24px 64px; align-items: end; margin-bottom: clamp(40px, 6vw, 72px); }
+.intro p { color: var(--muted); font-size: 1.125rem; max-width: 52ch; }
+@media (max-width: 860px) { .intro { grid-template-columns: 1fr; } }
 
 /* Boutons */
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font: 600 0.98rem/1 var(--f-body); padding: 15px 26px; border-radius: 999px; text-decoration: none; border: 1.5px solid transparent; cursor: pointer; transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease; }
-.btn:hover { transform: translateY(-2px); }
-.btn-gold { background: var(--gold); color: var(--gold-ink); box-shadow: 0 10px 24px -10px color-mix(in srgb, var(--gold) 80%, transparent); }
-.btn-line { border-color: color-mix(in srgb, currentColor 45%, transparent); color: inherit; background: transparent; }
-.btn-line:hover { border-color: currentColor; }
-.btn-bissap { background: var(--bissap); color: var(--bissap-ink); }
-.btn svg { width: 18px; height: 18px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 24px; border-radius: 6px; font: 600 1rem/1 var(--font); text-decoration: none; border: 1.5px solid transparent; cursor: pointer; transition: background-color .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease); }
+.btn-primary { background: var(--brand); color: var(--brand-ink); }
+.btn-primary:hover { background: color-mix(in srgb, var(--brand) 86%, var(--ink)); }
+.btn-dark { background: var(--ink); color: var(--bg); }
+.btn-dark:hover { background: var(--brand); color: var(--brand-ink); }
+.btn-outline { border-color: var(--line); color: var(--ink); background: transparent; }
+.btn-outline:hover { border-color: var(--ink); }
+.arrow { transition: transform .2s var(--ease); }
+.btn:hover .arrow { transform: translateX(3px); }
+.link { font-weight: 600; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 4px; text-decoration-color: var(--brand); }
 
-/* Navigation */
-.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--bissap-deep) 92%, transparent); backdrop-filter: blur(10px); color: var(--bissap-ink); border-bottom: 1px solid color-mix(in srgb, var(--bissap-ink) 10%, transparent); }
-.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-block: 14px; }
-.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-.brand-mark { width: 34px; height: 34px; flex: none; border-radius: 50%; border: 1.5px solid var(--gold); display: grid; place-items: center; font: italic 600 1.15rem/1 var(--f-display); color: var(--gold); }
-.brand-name { font: 600 1.22rem/1 var(--f-display); letter-spacing: 0.01em; }
-.brand-name small { display: block; font: 500 0.62rem/1 var(--f-mono); letter-spacing: 0.22em; text-transform: uppercase; opacity: 0.7; margin-top: 5px; }
-.nav ul { display: flex; gap: 30px; list-style: none; margin: 0; padding: 0; font-size: 0.94rem; font-weight: 500; }
-.nav ul a { text-decoration: none; opacity: 0.8; transition: opacity .2s; }
-.nav ul a:hover { opacity: 1; }
-.nav .btn { padding: 11px 20px; font-size: 0.9rem; }
-@media (max-width: 900px) { .nav ul { display: none; } }
-@media (max-width: 420px) { .brand-name small { display: none; } .nav .btn { padding: 10px 14px; } }
+/* En-tête */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--bg) 94%, transparent); backdrop-filter: saturate(1.4) blur(8px); border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; gap: 32px; min-height: 72px; }
+.logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-size: 1.15rem; letter-spacing: -0.02em; }
+.logo-mark { width: 30px; height: 30px; border-radius: 5px; background: var(--brand); color: var(--brand-ink); display: grid; place-items: center; font-weight: 800; font-size: 1rem; }
+.logo b { font-weight: 800; }
+.logo-sub { font-weight: 400; color: var(--muted); }
+.menu { display: flex; gap: 28px; list-style: none; margin: 0 0 0 auto; padding: 0; font-weight: 500; font-size: 0.98rem; }
+.menu a { text-decoration: none; color: var(--muted); transition: color .2s; }
+.menu a:hover { color: var(--ink); }
+.top .btn { min-height: 42px; padding: 0 18px; font-size: 0.95rem; }
+@media (max-width: 920px) { .menu { display: none; } .top .btn { margin-left: auto; } }
+@media (max-width: 400px) { .logo-sub { display: none; } }
 
 /* Héros */
-.hero { position: relative; overflow: hidden; background: radial-gradient(120% 90% at 85% 10%, var(--bissap) 0%, var(--bissap-deep) 70%); color: var(--bissap-ink); }
-.hero::after { content: ""; position: absolute; inset: 0; pointer-events: none;
-  background:
-    repeating-linear-gradient(90deg, color-mix(in srgb, var(--gold) 16%, transparent) 0 1px, transparent 1px 26px),
-    repeating-linear-gradient(0deg, color-mix(in srgb, var(--gold) 10%, transparent) 0 1px, transparent 1px 26px);
-  -webkit-mask-image: linear-gradient(105deg, transparent 35%, #000 95%); mask-image: linear-gradient(105deg, transparent 35%, #000 95%); }
-.hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.2fr 0.9fr; gap: clamp(36px, 6vw, 72px); align-items: center; padding-block: clamp(64px, 9vw, 112px); }
-.hero-copy { display: grid; gap: 28px; min-width: 0; }
-.hero .eyebrow { color: var(--gold); }
-.hero h1 { font-size: clamp(2.6rem, 6.4vw, 4.9rem); letter-spacing: -0.02em; font-weight: 600; }
-.hero-copy > p { font-size: 1.18rem; opacity: 0.86; max-width: 52ch; }
-.hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
-.hero-facts { display: flex; flex-wrap: wrap; gap: 10px 28px; font-size: 0.92rem; opacity: 0.85; padding-top: 6px; }
-.hero-facts span { display: inline-flex; align-items: center; gap: 8px; }
-.hero-facts span::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
-.rise > * { animation: rise .9s cubic-bezier(.2,.7,.2,1) both; }
-.rise > *:nth-child(2) { animation-delay: .08s; } .rise > *:nth-child(3) { animation-delay: .16s; } .rise > *:nth-child(4) { animation-delay: .24s; } .rise > *:nth-child(5) { animation-delay: .32s; }
-@keyframes rise { from { transform: translateY(18px); } to { transform: none; } }
+.hero { padding-block: clamp(40px, 6vw, 80px) clamp(56px, 8vw, 96px); }
+.hero .wrap { display: grid; grid-template-columns: 1.2fr 0.9fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
+.hero h1 { font-size: clamp(2.3rem, 5vw, 4.2rem); letter-spacing: -0.035em; font-weight: 800; }
+.hero h1 span { color: var(--brand); }
+.hero-text { display: grid; gap: 26px; min-width: 0; }
+.hero-text > p { font-size: 1.2rem; color: var(--muted); max-width: 46ch; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-photo { position: relative; min-width: 0; }
+.hero-photo img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 8px; background: var(--soft); }
+.hero-note { position: absolute; left: -28px; bottom: 32px; background: var(--bg); border-radius: 8px; padding: 16px 20px; box-shadow: 0 18px 40px -18px rgb(0 0 0 / .35); display: grid; gap: 2px; max-width: 260px; }
+.hero-note small { color: var(--muted); font-size: 0.85rem; }
+.hero-note strong { font-size: 1.5rem; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+@media (max-width: 900px) {
+  .hero .wrap { grid-template-columns: 1fr; }
+  .hero-photo img { aspect-ratio: 4 / 3; }
+  .hero-note { left: 16px; bottom: 16px; }
+}
 
-/* Carte parcours du héros */
-.journey { position: relative; background: color-mix(in srgb, var(--bissap-ink) 7%, transparent); border: 1px solid color-mix(in srgb, var(--bissap-ink) 16%, transparent); border-radius: 24px; padding: clamp(22px, 3vw, 32px); display: grid; gap: 22px; backdrop-filter: blur(6px); min-width: 0; animation: rise 1.1s .2s cubic-bezier(.2,.7,.2,1) both; }
-.journey-title { font: 500 0.74rem/1 var(--f-mono); letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.7; }
-.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
-.steps li { display: grid; grid-template-columns: 40px 1fr; gap: 16px; padding-bottom: 22px; position: relative; }
-.steps li:last-child { padding-bottom: 0; }
-.steps li:not(:last-child)::before { content: ""; position: absolute; left: 19px; top: 40px; bottom: 2px; width: 1px; background: linear-gradient(var(--gold), color-mix(in srgb, var(--gold) 20%, transparent)); }
-.step-n { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; border: 1px solid var(--gold); color: var(--gold); font: italic 600 1.1rem/1 var(--f-display); }
-.steps strong { display: block; font: 600 1.18rem/1.25 var(--f-display); margin-bottom: 3px; }
-.steps span { font-size: 0.93rem; opacity: 0.78; }
-.journey-foot { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 14px; padding-top: 20px; border-top: 1px solid color-mix(in srgb, var(--bissap-ink) 14%, transparent); }
-.from { display: grid; gap: 4px; }
-.from small { font-size: 0.8rem; opacity: 0.7; }
-.from b { font: 600 1.6rem/1 var(--f-display); color: var(--gold); }
-.from b i { font: 500 0.82rem/1 var(--f-body); font-style: normal; color: var(--bissap-ink); opacity: .75; }
-.pay { display: flex; gap: 8px; flex-wrap: wrap; }
-.chip { font: 500 0.74rem/1 var(--f-mono); letter-spacing: 0.04em; padding: 8px 12px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--bissap-ink) 22%, transparent); }
+.facts { border-block: 1px solid var(--line); }
+.facts .wrap { display: grid; grid-template-columns: repeat(4, 1fr); }
+.facts p { padding: 22px 20px; border-left: 1px solid var(--line); font-size: 0.98rem; color: var(--muted); }
+.facts p:first-child { border-left: 0; padding-left: 0; }
+.facts b { display: block; color: var(--ink); font-weight: 600; }
+@media (max-width: 900px) { .facts .wrap { grid-template-columns: 1fr 1fr; } .facts p:nth-child(3) { border-left: 0; padding-left: 0; } .facts p:nth-child(n+3) { border-top: 1px solid var(--line); } }
+@media (max-width: 520px) { .facts .wrap { grid-template-columns: 1fr; } .facts p { border-left: 0; padding-left: 0; } .facts p + p { border-top: 1px solid var(--line); } }
 
-@media (max-width: 900px) { .hero .wrap { grid-template-columns: 1fr; } }
-
-/* Bandeau de valeurs */
-.values { border-bottom: 1px solid var(--line); background: var(--surface); }
-.values .wrap { display: grid; grid-template-columns: repeat(3, 1fr); }
-.values div { padding: 28px 24px; display: grid; gap: 4px; border-left: 1px solid var(--line); }
-.values div:first-child { border-left: 0; padding-left: 0; }
-.values b { font: 600 1.15rem/1.3 var(--f-display); }
-.values span { color: var(--muted); font-size: 0.94rem; }
-@media (max-width: 760px) { .values .wrap { grid-template-columns: 1fr; } .values div { border-left: 0; border-top: 1px solid var(--line); padding-left: 0; } .values div:first-child { border-top: 0; } }
-
-/* Services */
-.poles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-.pole { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 34px 30px 30px; display: grid; gap: 18px; align-content: start; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; min-width: 0; }
-.pole:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: color-mix(in srgb, var(--gold) 50%, var(--line)); }
-.pole-icon { width: 54px; height: 54px; border-radius: 16px; display: grid; place-items: center; background: var(--gold-soft); color: var(--bissap); }
-:root[data-theme="dark"] .pole-icon { color: var(--gold); }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .pole-icon { color: var(--gold); } }
-.pole-icon svg { width: 26px; height: 26px; }
-.pole > p { color: var(--muted); }
-.ticks { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; font-size: 0.96rem; }
-.ticks li { display: grid; grid-template-columns: 18px 1fr; gap: 10px; }
-.ticks li::before { content: ""; width: 14px; height: 8px; margin-top: 7px; border-left: 2px solid var(--leaf); border-bottom: 2px solid var(--leaf); transform: rotate(-45deg); }
-.deliv { margin-top: 4px; padding-top: 16px; border-top: 1px dashed var(--line); font-size: 0.88rem; color: var(--muted); }
-.deliv b { display: block; font: 500 0.7rem/1 var(--f-mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); margin-bottom: 8px; }
-@media (max-width: 960px) { .poles { grid-template-columns: 1fr; } }
+/* Services : rangées */
+.services { border-top: 1px solid var(--ink); }
+.service { display: grid; grid-template-columns: 4fr 5fr 3fr; gap: 20px 48px; padding-block: 36px; border-bottom: 1px solid var(--line); }
+.service h3 { font-size: clamp(1.6rem, 2.8vw, 2.1rem); letter-spacing: -0.03em; }
+.service > p { color: var(--muted); font-size: 1.08rem; }
+.service ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-size: 0.98rem; }
+.service li { padding-left: 16px; position: relative; }
+.service li::before { content: ""; position: absolute; left: 0; top: 0.72em; width: 6px; height: 1.5px; background: var(--brand); }
+@media (max-width: 900px) { .service { grid-template-columns: 1fr; } }
 
 /* Méthode */
-.method { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--line); }
-.method > div { padding: 34px 32px 6px 0; display: grid; gap: 12px; align-content: start; }
-.method > div + div { padding-left: 32px; border-left: 1px solid var(--line); }
-.method .num { font: italic 500 3.4rem/1 var(--f-display); color: var(--gold); }
-.method p { color: var(--muted); }
-@media (max-width: 860px) { .method { grid-template-columns: 1fr; } .method > div + div { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); } .method > div { padding-bottom: 30px; } }
+.method { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(32px, 6vw, 88px); align-items: start; }
+.method img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 8px; background: var(--line); position: sticky; top: 100px; }
+.steps { list-style: none; margin: 0; padding: 0; counter-reset: s; display: grid; gap: 0; }
+.steps li { counter-increment: s; padding-block: 28px; border-top: 1px solid var(--line); display: grid; grid-template-columns: 56px 1fr; gap: 6px 16px; }
+.steps li:last-child { border-bottom: 1px solid var(--line); }
+.steps li::before { content: counter(s); grid-row: span 2; width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid var(--ink); display: grid; place-items: center; font-weight: 700; }
+.steps p { color: var(--muted); }
+@media (max-width: 860px) { .method { grid-template-columns: 1fr; } .method img { position: static; aspect-ratio: 16 / 10; } }
 
 /* Pour qui */
-.segs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; }
-.seg { background: var(--surface); padding: 28px 26px; display: grid; gap: 10px; align-content: start; min-width: 0; }
-.seg-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
-.seg h3 { font-size: 1.22rem; }
-.seg p { color: var(--muted); font-size: 0.95rem; }
-.prio { flex: none; font: 500 0.68rem/1 var(--f-mono); letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 9px; border-radius: 999px; background: var(--band); color: var(--muted); white-space: nowrap; }
-.prio.p1 { background: var(--gold-soft); color: var(--ink); }
-@media (max-width: 900px) { .segs { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 600px) { .segs { grid-template-columns: 1fr; } }
+.who { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 64px; }
+.who div { padding-block: 22px; border-top: 1px solid var(--line); display: grid; grid-template-columns: 1fr 1.3fr; gap: 6px 24px; }
+.who h3 { font-size: 1.12rem; }
+.who p { color: var(--muted); font-size: 0.98rem; }
+.who .first h3::after { content: "Priorité"; display: table; margin-top: 6px; font-size: 0.75rem; font-weight: 600; color: var(--brand); background: var(--brand-soft); padding: 3px 8px; border-radius: 4px; letter-spacing: 0; }
+@media (max-width: 900px) { .who { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .who div { grid-template-columns: 1fr; } }
 
-/* Formules */
-.switch { display: inline-flex; padding: 5px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); gap: 4px; margin-bottom: 36px; max-width: 100%; }
-.switch button { font: 600 0.92rem/1 var(--f-body); padding: 12px 20px; border-radius: 999px; border: 0; background: transparent; color: var(--muted); cursor: pointer; transition: background-color .2s, color .2s; }
-.switch button[aria-selected="true"] { background: var(--bissap); color: var(--bissap-ink); }
-.plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; align-items: stretch; }
-.plan { background: var(--surface); border: 1px solid var(--line); border-radius: 22px; padding: 34px 30px; display: grid; gap: 22px; grid-template-rows: auto auto 1fr auto; min-width: 0; position: relative; }
-.plan.feat { background: var(--bissap); color: var(--bissap-ink); border-color: var(--bissap); box-shadow: var(--shadow); }
-.plan.feat .plan-for, .plan.feat .price small { color: color-mix(in srgb, var(--bissap-ink) 72%, transparent); }
-.plan.feat .ticks li::before { border-color: var(--gold); }
-.badge { position: absolute; top: -13px; left: 30px; font: 500 0.7rem/1 var(--f-mono); letter-spacing: 0.12em; text-transform: uppercase; background: var(--gold); color: var(--gold-ink); padding: 8px 12px; border-radius: 999px; }
-.plan h3 { font-size: 1.7rem; }
-.plan-for { color: var(--muted); font-size: 0.95rem; margin-top: 6px; }
-.price { display: grid; gap: 6px; padding-block: 18px; border-block: 1px solid color-mix(in srgb, currentColor 14%, transparent); }
-.price b { font: 600 clamp(1.45rem, 2.4vw, 1.75rem)/1.1 var(--f-display); font-variant-numeric: lining-nums tabular-nums; }
-.price small { font-size: 0.84rem; color: var(--muted); }
+/* Tarifs */
+.tabs { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; padding: 4px; gap: 4px; margin-bottom: 28px; background: var(--bg); max-width: 100%; }
+.tabs button { min-height: 42px; padding: 0 18px; border: 0; border-radius: 5px; background: transparent; color: var(--muted); font: 600 0.95rem/1 var(--font); cursor: pointer; transition: background-color .2s, color .2s; }
+.tabs button[aria-selected="true"] { background: var(--ink); color: var(--bg); }
+.plans { display: grid; grid-template-columns: repeat(3, 1fr); background: var(--bg); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.plan { padding: 32px 28px; display: grid; grid-template-rows: auto auto 1fr auto; gap: 20px; border-left: 1px solid var(--line); min-width: 0; }
+.plan:first-child { border-left: 0; }
+.plan.main { box-shadow: inset 0 4px 0 var(--brand); }
+.plan h3 { font-size: 1.5rem; }
+.plan .for { color: var(--muted); font-size: 0.95rem; margin-top: 4px; }
+.price { font-size: clamp(1.5rem, 2.4vw, 1.9rem); font-weight: 700; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; line-height: 1.15; }
+.price small { display: block; font-size: 0.88rem; font-weight: 400; color: var(--muted); letter-spacing: 0; margin-top: 4px; }
+.plan ul { list-style: none; margin: 0; padding: 18px 0 0; border-top: 1px solid var(--line); display: grid; gap: 8px; font-size: 0.98rem; }
+.plan li { padding-left: 24px; position: relative; }
+.plan li::before { content: ""; position: absolute; left: 2px; top: 0.45em; width: 10px; height: 5px; border-left: 1.5px solid var(--brand); border-bottom: 1.5px solid var(--brand); transform: rotate(-45deg); }
 .plan .btn { width: 100%; }
-.plan:not(.feat) .btn { background: transparent; color: var(--ink); border-color: var(--line); }
-.plan:not(.feat) .btn:hover { border-color: var(--ink); }
-@media (max-width: 960px) { .plans { grid-template-columns: 1fr; max-width: 520px; } }
+@media (max-width: 960px) { .plans { grid-template-columns: 1fr; } .plan { border-left: 0; border-top: 1px solid var(--line); } .plan:first-child { border-top: 0; } }
 
-.forfaits { background: var(--surface); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; }
-.forfaits table { width: 100%; border-collapse: collapse; }
-.forfaits th, .forfaits td { text-align: left; padding: 18px 28px; border-bottom: 1px solid var(--line); }
-.forfaits tr:last-child td { border-bottom: 0; }
-.forfaits th { font: 500 0.72rem/1 var(--f-mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); background: var(--band); }
-.forfaits td:last-child, .forfaits th:last-child { text-align: right; white-space: nowrap; }
-.forfaits td:last-child { font-family: var(--f-mono); font-size: 0.92rem; font-variant-numeric: tabular-nums; }
-.forfaits tbody tr { transition: background-color .2s; }
-.forfaits tbody tr:hover { background: color-mix(in srgb, var(--gold-soft) 45%, transparent); }
-@media (max-width: 640px) { .forfaits th, .forfaits td { padding: 14px 16px; } .forfaits td:last-child { white-space: normal; } }
-.terms { display: flex; flex-wrap: wrap; gap: 10px 26px; margin-top: 26px; color: var(--muted); font-size: 0.9rem; }
-.terms span { display: inline-flex; gap: 8px; align-items: center; }
-.terms span::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); }
+.table { background: var(--bg); border: 1px solid var(--line); border-radius: 10px; overflow-x: auto; }
+.table table { width: 100%; border-collapse: collapse; min-width: 480px; }
+.table th, .table td { padding: 16px 24px; text-align: left; border-bottom: 1px solid var(--line); }
+.table tr:last-child td { border-bottom: 0; }
+.table th { font-size: 0.88rem; font-weight: 600; color: var(--muted); }
+.table td:last-child, .table th:last-child { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.table td:last-child { font-weight: 600; }
+.small-print { margin-top: 22px; color: var(--muted); font-size: 0.95rem; max-width: 72ch; }
 
-/* Teranga Academy */
-.academy { background: var(--bissap-deep); color: var(--bissap-ink); position: relative; overflow: hidden; }
-.academy::before { content: "Academy"; position: absolute; right: -2vw; bottom: -0.22em; font: italic 600 clamp(6rem, 20vw, 17rem)/1 var(--f-display); color: color-mix(in srgb, var(--gold) 9%, transparent); pointer-events: none; white-space: nowrap; }
-.academy .wrap { position: relative; display: grid; grid-template-columns: 0.95fr 1.05fr; gap: clamp(40px, 6vw, 80px); align-items: start; }
-.academy .eyebrow { color: var(--gold); }
-.academy .lede { color: color-mix(in srgb, var(--bissap-ink) 78%, transparent); }
-.academy-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
-.academy-list li { padding: 22px 0; border-top: 1px solid color-mix(in srgb, var(--bissap-ink) 14%, transparent); display: grid; gap: 4px; }
-.academy-list li:last-child { border-bottom: 1px solid color-mix(in srgb, var(--bissap-ink) 14%, transparent); }
-.academy-list strong { font: 600 1.25rem/1.3 var(--f-display); color: var(--gold); }
-.academy-list span { opacity: 0.82; }
-@media (max-width: 900px) { .academy .wrap { grid-template-columns: 1fr; } }
+/* Bandeau photo */
+.band-photo { position: relative; }
+.band-photo img { width: 100%; height: clamp(280px, 42vw, 520px); object-fit: cover; background: var(--line); }
+.band-photo figcaption { position: absolute; right: max(20px, env(safe-area-inset-right, 0px)); bottom: 16px; color: #fff; font-size: 0.85rem; text-shadow: 0 1px 6px rgb(0 0 0 / .6); }
+
+/* Academy */
+.academy { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(32px, 6vw, 88px); align-items: center; }
+.academy-text { display: grid; gap: 22px; min-width: 0; }
+.academy-text > p { color: var(--muted); font-size: 1.1rem; max-width: 54ch; }
+.academy dl { margin: 0; display: grid; gap: 0; }
+.academy dl div { padding-block: 16px; border-top: 1px solid var(--line); display: grid; grid-template-columns: 180px 1fr; gap: 4px 20px; }
+.academy dt { font-weight: 600; }
+.academy dd { margin: 0; color: var(--muted); }
+.academy img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 8px; background: var(--line); }
+@media (max-width: 900px) { .academy { grid-template-columns: 1fr; } .academy img { aspect-ratio: 16 / 10; order: -1; } }
+@media (max-width: 560px) { .academy dl div { grid-template-columns: 1fr; } }
 
 /* Comparatif */
-.compare { overflow-x: auto; border: 1px solid var(--line); border-radius: 22px; background: var(--surface); }
-.compare table { width: 100%; min-width: 680px; border-collapse: collapse; }
-.compare th, .compare td { padding: 20px 24px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); font-size: 0.96rem; }
-.compare tr:last-child td { border-bottom: 0; }
-.compare thead th { font: 500 0.72rem/1 var(--f-mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); background: var(--band); }
-.compare tbody th { font: 600 1.08rem/1.3 var(--f-display); width: 26%; }
-.compare td:nth-child(2) { color: var(--muted); }
-.compare td:last-child { font-weight: 500; }
-.compare thead th:last-child { color: var(--bissap); }
-:root[data-theme="dark"] .compare thead th:last-child { color: var(--gold); }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .compare thead th:last-child { color: var(--gold); } }
+.vs { display: grid; gap: 0; border-top: 1px solid var(--ink); }
+.vs div { display: grid; grid-template-columns: 1fr 1.2fr 1.2fr; gap: 8px 40px; padding-block: 22px; border-bottom: 1px solid var(--line); }
+.vs h3 { font-size: 1.12rem; }
+.vs p { color: var(--muted); }
+.vs p + p { color: var(--ink); }
+.vs .label { font-size: 0.85rem; font-weight: 600; color: var(--muted); padding-block: 12px; }
+@media (max-width: 860px) { .vs div { grid-template-columns: 1fr; } .vs .label { display: none; } .vs p:first-of-type::before { content: "Le souci : "; font-weight: 600; } .vs p + p::before { content: "Chez nous : "; font-weight: 600; color: var(--brand); } }
 
-/* Clients pilotes */
-.pilot { display: grid; grid-template-columns: auto 1fr auto; gap: 28px 40px; align-items: center; background: var(--gold-soft); border-radius: 26px; padding: clamp(28px, 4vw, 48px); }
-.pilot-n { font: italic 600 clamp(4rem, 9vw, 6.5rem)/0.9 var(--f-display); color: var(--bissap); }
-:root[data-theme="dark"] .pilot-n { color: var(--gold); }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .pilot-n { color: var(--gold); } }
-.pilot h3 { font-size: clamp(1.5rem, 2.8vw, 2rem); margin-bottom: 8px; }
-.pilot p { color: var(--muted); max-width: 58ch; }
+/* Pilotes */
+.pilot { background: var(--ink); color: var(--bg); border-radius: 12px; padding: clamp(32px, 5vw, 56px); display: grid; grid-template-columns: 1.4fr 1fr; gap: 28px 56px; align-items: center; }
+.pilot h2 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); }
+.pilot p { color: color-mix(in srgb, var(--bg) 72%, transparent); margin-top: 14px; max-width: 54ch; }
+.pilot .btn-primary { justify-self: start; }
 @media (max-width: 860px) { .pilot { grid-template-columns: 1fr; } }
 
 /* Contact */
-.contact .wrap { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(40px, 6vw, 80px); align-items: start; }
-.contact-info { display: grid; gap: 26px; }
-.coords { display: grid; gap: 0; }
-.coords div { display: grid; grid-template-columns: 130px 1fr; gap: 16px; padding: 16px 0; border-top: 1px solid var(--line); font-size: 0.96rem; }
-.coords div:last-child { border-bottom: 1px solid var(--line); }
-.coords dt { font: 500 0.72rem/1.9 var(--f-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
-.coords dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
-.coords .todo { color: var(--muted); font-style: italic; }
-form { background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: clamp(24px, 3.5vw, 40px); display: grid; gap: 18px; box-shadow: var(--shadow); min-width: 0; }
-.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-@media (max-width: 560px) { .row2 { grid-template-columns: 1fr; } }
-label { display: grid; gap: 8px; font-size: 0.88rem; font-weight: 600; min-width: 0; }
-input, select, textarea { font: 400 1rem/1.4 var(--f-body); color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 13px 14px; width: 100%; transition: border-color .2s, box-shadow .2s; }
-input:focus, select:focus, textarea:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 4px color-mix(in srgb, var(--gold) 22%, transparent); }
-textarea { min-height: 120px; resize: vertical; }
-.form-note { font-size: 0.85rem; color: var(--muted); }
-.result { display: grid; gap: 12px; padding: 18px; border-radius: 14px; background: var(--band); border: 1px solid var(--line); }
-.result pre { margin: 0; white-space: pre-wrap; font: 400 0.9rem/1.5 var(--f-body); }
-.result-actions { display: flex; flex-wrap: wrap; gap: 10px; }
-.result-actions .btn { padding: 11px 18px; font-size: 0.9rem; }
-@media (max-width: 900px) { .contact .wrap { grid-template-columns: 1fr; } }
+.contact { display: grid; grid-template-columns: 1fr 1.15fr; gap: clamp(36px, 6vw, 88px); align-items: start; }
+.contact-text { display: grid; gap: 22px; min-width: 0; }
+.contact-text > p { color: var(--muted); font-size: 1.1rem; max-width: 46ch; }
+.coords { margin: 8px 0 0; display: grid; }
+.coords div { display: grid; grid-template-columns: 110px 1fr; gap: 16px; padding-block: 14px; border-top: 1px solid var(--line); }
+.coords dt { color: var(--muted); font-size: 0.95rem; }
+.coords dd { margin: 0; font-weight: 500; overflow-wrap: anywhere; }
+.coords .todo { color: var(--muted); font-weight: 400; font-style: italic; }
+form { display: grid; gap: 18px; background: var(--soft); border-radius: 12px; padding: clamp(22px, 3.5vw, 40px); min-width: 0; }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+@media (max-width: 560px) { .row { grid-template-columns: 1fr; } }
+label { display: grid; gap: 7px; font-size: 0.92rem; font-weight: 600; min-width: 0; }
+label i { font-style: normal; color: var(--brand); }
+input, select, textarea { width: 100%; min-height: 48px; padding: 12px 14px; font: 400 1rem/1.4 var(--font); color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; transition: border-color .2s, box-shadow .2s; }
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--ink); box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand) 22%, transparent); }
+textarea { min-height: 130px; resize: vertical; }
+.err { color: var(--brand); font-size: 0.85rem; font-weight: 500; min-height: 0; }
+.form-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+.form-foot p { color: var(--muted); font-size: 0.9rem; }
+.result { display: grid; gap: 14px; padding: 18px; border-radius: 8px; background: var(--bg); border: 1px solid var(--line); }
+.result pre { margin: 0; white-space: pre-wrap; font: 400 0.95rem/1.55 var(--font); }
+.result div { display: flex; flex-wrap: wrap; gap: 10px; }
+@media (max-width: 900px) { .contact { grid-template-columns: 1fr; } }
 
 /* Pied de page */
-footer { background: var(--bissap-deep); color: var(--bissap-ink); padding-block: 48px calc(36px + env(safe-area-inset-bottom, 0px)); }
-footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 22px; }
-footer p { font-size: 0.88rem; opacity: 0.7; }
-footer .quote { font: italic 500 1.15rem/1.4 var(--f-display); opacity: 0.95; color: var(--gold); }
+footer { border-top: 1px solid var(--line); padding-block: 40px calc(40px + env(safe-area-inset-bottom, 0px)); color: var(--muted); font-size: 0.92rem; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 16px 40px; align-items: center; justify-content: space-between; }
+footer nav { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+footer a { text-decoration: none; }
+footer a:hover { color: var(--ink); }
 
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; } }
 </style>
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
 
-<header class="nav">
+<header class="top">
   <div class="wrap">
-    <a class="brand" href="#accueil" aria-label="Teranga Consulting, accueil">
-      <span class="brand-mark" aria-hidden="true">T</span>
-      <span class="brand-name">Teranga Consulting<small>Dakar · Sénégal</small></span>
-    </a>
-    <nav aria-label="Navigation principale">
-      <ul>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#methode">Méthode</a></li>
-        <li><a href="#formules">Formules</a></li>
-        <li><a href="#academy">Academy</a></li>
-        <li><a href="#pourquoi">Pourquoi nous</a></li>
-      </ul>
-    </nav>
-    <a class="btn btn-gold" href="#contact">Parlons de votre projet</a>
+    <a class="logo" href="#" aria-label="Teranga Consulting, retour en haut"><span class="logo-mark" aria-hidden="true">T</span><b>Teranga</b><span class="logo-sub">Consulting</span></a>
+    <ul class="menu">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#mission">Une mission</a></li>
+      <li><a href="#tarifs">Tarifs</a></li>
+      <li><a href="#academy">Teranga Academy</a></li>
+    </ul>
+    <a class="btn btn-dark" href="#contact">Nous écrire</a>
   </div>
 </header>
 
-<main>
-  <section class="hero" id="accueil">
+<main id="contenu">
+  <section class="hero">
     <div class="wrap">
-      <div class="hero-copy rise">
-        <span class="eyebrow">Conseil · Numérique · Formation</span>
-        <h1>Votre partenaire numérique, de la stratégie <em>à la formation</em> de vos équipes.</h1>
-        <p>Nous aidons les PME, institutions et ONG du Sénégal à se digitaliser, à mieux communiquer et à faire monter leurs équipes en compétences. Une seule équipe, un seul interlocuteur, des prix en FCFA.</p>
+      <div class="hero-text">
+        <h1>Le numérique pour votre entreprise, <span>sans jargon</span> et payable en FCFA.</h1>
+        <p>Nous accompagnons les PME, les ONG et les institutions du Sénégal : informatique, communication, formation. Un seul interlocuteur du début à la fin. Et après chaque mission, vos équipes apprennent à se débrouiller sans nous.</p>
         <div class="hero-actions">
-          <a class="btn btn-gold" href="#contact">Demander un diagnostic
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-          <a class="btn btn-line" href="#formules">Voir les formules</a>
-        </div>
-        <div class="hero-facts">
-          <span>Dakar, Thiès, Saint-Louis</span>
-          <span>Paiement Wave et Orange Money</span>
-          <span>Formation incluse après chaque mission</span>
+          <a class="btn btn-primary" href="#contact">Demander un premier rendez-vous <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="btn btn-outline" href="#tarifs">Voir les tarifs</a>
         </div>
       </div>
-
-      <aside class="journey" aria-label="Le déroulé d'une mission">
-        <span class="journey-title">Une mission, trois temps</span>
-        <ol class="steps">
-          <li><span class="step-n">1</span><div><strong>Diagnostic</strong><span>Audit de vos outils et de votre communication, rapport clair.</span></div></li>
-          <li><span class="step-n">2</span><div><strong>Mise en œuvre</strong><span>Site, messagerie pro, campagnes, sécurité : on livre du concret.</span></div></li>
-          <li><span class="step-n">3</span><div><strong>Formation</strong><span>Vos équipes suivent un cours Teranga Academy et deviennent autonomes.</span></div></li>
-        </ol>
-        <div class="journey-foot">
-          <div class="from"><small>Abonnement mensuel</small><b>75 000 <i>FCFA HT / mois</i></b><small>à partir de</small></div>
-          <div class="pay"><span class="chip">Wave</span><span class="chip">Orange Money</span></div>
-        </div>
-      </aside>
+      <figure class="hero-photo" style="margin:0">
+        <img src="https://images.unsplash.com/photo-1653566031587-114b636e182b?w=1100&q=80&auto=format&fit=crop" srcset="https://images.unsplash.com/photo-1653566031587-114b636e182b?w=700&q=80&auto=format&fit=crop 700w, https://images.unsplash.com/photo-1653566031587-114b636e182b?w=1100&q=80&auto=format&fit=crop 1100w" sizes="(max-width: 900px) 100vw, 48vw" width="1100" height="1375" alt="Trois collègues penchés sur un ordinateur portable dans un bureau lumineux" fetchpriority="high">
+        <figcaption class="hero-note"><small>Abonnement mensuel à partir de</small><strong>75 000 FCFA</strong><small>HT, réglable par Wave ou Orange Money</small></figcaption>
+      </figure>
     </div>
   </section>
 
-  <div class="values">
+  <div class="facts">
     <div class="wrap">
-      <div><b>Un diagnostic clair</b><span>Vous savez où vous en êtes et par quoi commencer.</span></div>
-      <div><b>Une mise en œuvre concrète</b><span>Des livrables en ligne, pas seulement des recommandations.</span></div>
-      <div><b>Des équipes autonomes</b><span>La formation reste quand la mission se termine.</span></div>
+      <p><b>Dakar, Thiès, Saint-Louis</b>Nous nous déplaçons chez vous.</p>
+      <p><b>Wave et Orange Money</b>Pas besoin de carte bancaire.</p>
+      <p><b>Un seul contact</b>Pour l'informatique comme pour la com'.</p>
+      <p><b>Cours en français</b>Avec des exemples d'ici.</p>
     </div>
   </div>
 
   <section class="section" id="services">
     <div class="wrap">
-      <div class="head">
-        <span class="eyebrow">Nos services</span>
-        <h2>Trois métiers, <em>une seule</em> équipe.</h2>
-        <p class="lede">Chaque pôle se vend seul ou en combinaison. Vous gardez le même interlocuteur du premier rendez-vous au suivi.</p>
+      <div class="intro">
+        <div><span class="kicker">Services</span><h2>Ce que nous faisons pour vous</h2></div>
+        <p>Vous pouvez nous confier un seul chantier ou les trois. Dans les deux cas, c'est la même équipe qui suit votre dossier.</p>
       </div>
-      <div class="poles">
-        <article class="pole">
-          <div class="pole-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/><path d="M8 9l2 2-2 2M13 13h3"/></svg></div>
+      <div class="services">
+        <article class="service">
           <h3>Informatique</h3>
-          <p>Des outils fiables et sécurisés pour travailler sereinement.</p>
-          <ul class="ticks">
-            <li>Audit du système d'information</li>
+          <p>Un site qui fonctionne, une messagerie professionnelle, des ordinateurs à jour et protégés. Et quelqu'un à appeler quand ça coince.</p>
+          <ul>
+            <li>Audit de vos outils</li>
             <li>Sites web et applications</li>
-            <li>Cloud et messagerie pro (Google Workspace, Microsoft 365)</li>
-            <li>Cybersécurité de base</li>
-            <li>Infogérance et maintenance</li>
+            <li>Google Workspace, Microsoft 365</li>
+            <li>Sécurité de base, sauvegardes</li>
+            <li>Maintenance au mois</li>
           </ul>
-          <p class="deliv"><b>Ce que vous recevez</b>Rapport d'audit, site en ligne, parc informatique sécurisé, contrat de maintenance.</p>
         </article>
-        <article class="pole">
-          <div class="pole-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v2a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg></div>
+        <article class="service">
           <h3>Communication</h3>
-          <p>Une marque claire et une présence régulière là où sont vos clients.</p>
-          <ul class="ticks">
-            <li>Stratégie de marque</li>
-            <li>Identité visuelle</li>
-            <li>Gestion des réseaux sociaux</li>
-            <li>Publicité en ligne (Meta, Google)</li>
-            <li>Relations presse, vidéo et photo</li>
+          <p>Une image claire et des réseaux sociaux tenus chaque semaine, pas seulement le mois du lancement. On vous envoie un rapport tous les mois.</p>
+          <ul>
+            <li>Logo et charte graphique</li>
+            <li>Facebook, Instagram, LinkedIn, TikTok</li>
+            <li>Publicité Meta et Google</li>
+            <li>Relations presse</li>
+            <li>Photo et vidéo</li>
           </ul>
-          <p class="deliv"><b>Ce que vous recevez</b>Charte graphique, calendrier éditorial, campagnes, rapports mensuels.</p>
         </article>
-        <article class="pole">
-          <div class="pole-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5L2 9Z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/><path d="M22 9v6"/></svg></div>
-          <h3>Formation professionnelle</h3>
-          <p>Des équipes qui maîtrisent leurs outils, avec une attestation à la clé.</p>
-          <ul class="ticks">
-            <li>Formations sur mesure en entreprise</li>
-            <li>Cours en ligne sur Teranga Academy</li>
+        <article class="service">
+          <h3>Formation</h3>
+          <p>En salle chez vous, en ligne sur Teranga Academy, ou un mélange des deux. Chaque participant reçoit une attestation.</p>
+          <ul>
             <li>Bureautique et outils numériques</li>
-            <li>Marketing digital, gestion de projet</li>
+            <li>Marketing digital</li>
+            <li>Gestion de projet</li>
+            <li>Formations sur mesure</li>
             <li>Séminaires inter-entreprises</li>
           </ul>
-          <p class="deliv"><b>Ce que vous recevez</b>Programme, supports, attestation ou certificat, évaluation des acquis.</p>
         </article>
       </div>
     </div>
   </section>
 
-  <section class="section band" id="methode">
-    <div class="wrap">
-      <div class="head">
-        <span class="eyebrow">Notre méthode</span>
-        <h2>Du diagnostic à <em>l'autonomie</em>.</h2>
-      </div>
-      <div class="method">
-        <div><span class="num">01</span><h3>Diagnostic</h3><p>Nous écoutons vos objectifs, examinons vos outils et votre présence en ligne, puis vous remettons un plan d'action priorisé et chiffré.</p></div>
-        <div><span class="num">02</span><h3>Mise en œuvre</h3><p>Nous livrons : site, messagerie, sécurité, campagnes, contenus. Vous suivez l'avancement avec un interlocuteur unique.</p></div>
-        <div><span class="num">03</span><h3>Formation</h3><p>Vos équipes apprennent à utiliser ce qui a été mis en place, en présentiel et sur Teranga Academy, avec attestation.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="cibles">
-    <div class="wrap">
-      <div class="head">
-        <span class="eyebrow">Pour qui</span>
-        <h2>Une offre à la taille des <em>structures sénégalaises</em>.</h2>
-        <p class="lede">Notre priorité : les PME et les entrepreneurs, qui ont le plus de besoins et le moins d'offres adaptées.</p>
-      </div>
-      <div class="segs">
-        <div class="seg"><div class="seg-top"><h3>PME et commerces</h3><span class="prio p1">Priorité</span></div><p>Site web, réseaux sociaux, outils de gestion, formation des employés. À Dakar, Thiès et Saint-Louis.</p></div>
-        <div class="seg"><div class="seg-top"><h3>Entrepreneurs et startups</h3><span class="prio p1">Priorité</span></div><p>Identité de marque, lancement en ligne, accompagnement numérique.</p></div>
-        <div class="seg"><div class="seg-top"><h3>ONG et projets</h3></div><p>Communication institutionnelle, renforcement de capacités, plateformes de formation.</p></div>
-        <div class="seg"><div class="seg-top"><h3>Institutions et collectivités</h3></div><p>Digitalisation des services aux usagers et formation des agents.</p></div>
-        <div class="seg"><div class="seg-top"><h3>Écoles et centres de formation</h3></div><p>Passage au e-learning et formation des formateurs.</p></div>
-        <div class="seg"><div class="seg-top"><h3>Particuliers en reconversion</h3></div><p>Formations certifiantes en ligne sur Teranga Academy.</p></div>
+  <section class="section soft" id="mission">
+    <div class="wrap method">
+      <img src="https://images.unsplash.com/photo-1653566031486-dc4ead13a35d?w=1000&q=80&auto=format&fit=crop" width="1000" height="1000" loading="lazy" alt="Réunion de travail autour d'une table avec des ordinateurs portables">
+      <div>
+        <span class="kicker">Comment ça se passe</span>
+        <h2 style="margin-bottom:32px">Une mission, étape par étape</h2>
+        <ol class="steps">
+          <li><h3>On vient vous voir</h3><p>Un ou deux rendez-vous pour comprendre votre activité, regarder vos outils et repérer ce qui vous fait perdre du temps. Vous recevez un rapport court, avec des priorités et un budget.</p></li>
+          <li><h3>On met en place</h3><p>Site, messagerie, campagnes, sécurité : nous livrons ce qui a été décidé, dans les délais annoncés. Vous suivez l'avancement avec la même personne.</p></li>
+          <li><h3>On forme vos équipes</h3><p>Une séance chez vous, puis des cours en ligne sur Teranga Academy. L'objectif est simple : que vous n'ayez pas besoin de nous appeler pour publier un article ou ajouter un utilisateur.</p></li>
+          <li><h3>On reste joignables</h3><p>Si vous le souhaitez, un abonnement mensuel prend le relais pour la maintenance et les réseaux sociaux.</p></li>
+        </ol>
       </div>
     </div>
   </section>
 
-  <section class="section band" id="formules">
+  <section class="section" id="clients">
     <div class="wrap">
-      <div class="head">
-        <span class="eyebrow">Formules et tarifs</span>
-        <h2>Un abonnement mensuel, <em>ou</em> un projet au forfait.</h2>
-        <p class="lede">Des prix pensés pour le marché local, en FCFA. Les montants sont indicatifs et hors TVA (18 %) ; le devis final dépend de votre besoin.</p>
+      <div class="intro">
+        <div><span class="kicker">Pour qui</span><h2>Pensé d'abord pour les PME</h2></div>
+        <p>Les grandes entreprises ont déjà leurs prestataires. Les PME, elles, trouvent soit des offres trop chères, soit des freelances qui disparaissent après la livraison. C'est pour elles que nous avons construit nos formules.</p>
+      </div>
+      <div class="who">
+        <div class="first"><h3>PME et commerces</h3><p>Site web, réseaux sociaux, outils de gestion, formation du personnel.</p></div>
+        <div class="first"><h3>Entrepreneurs et startups</h3><p>Une marque, un lancement en ligne, quelqu'un pour vous conseiller.</p></div>
+        <div><h3>ONG et projets</h3><p>Communication institutionnelle, renforcement de capacités, plateformes de formation.</p></div>
+        <div><h3>Institutions et collectivités</h3><p>Services en ligne pour les usagers, formation des agents.</p></div>
+        <div><h3>Écoles et centres de formation</h3><p>Passage au e-learning, formation des formateurs.</p></div>
+        <div><h3>Particuliers</h3><p>Cours certifiants sur Teranga Academy pour changer de métier.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section soft" id="tarifs">
+    <div class="wrap">
+      <div class="intro">
+        <div><span class="kicker">Tarifs</span><h2>Combien ça coûte</h2></div>
+        <p>Les prix sont affichés en FCFA, hors TVA. Ce sont des fourchettes : le montant exact dépend de votre besoin, et nous vous l'annonçons par écrit après le premier rendez-vous.</p>
       </div>
 
-      <div class="switch" role="tablist" aria-label="Type d'offre">
-        <button type="button" role="tab" id="tab-abo" aria-selected="true" aria-controls="panel-abo">Abonnement mensuel</button>
-        <button type="button" role="tab" id="tab-forfait" aria-selected="false" aria-controls="panel-forfait">Projet au forfait</button>
+      <div class="tabs" role="tablist" aria-label="Type d'offre">
+        <button type="button" role="tab" id="t-mois" aria-selected="true" aria-controls="p-mois">Abonnement au mois</button>
+        <button type="button" role="tab" id="t-projet" aria-selected="false" aria-controls="p-projet">Projet ponctuel</button>
       </div>
 
-      <div id="panel-abo" role="tabpanel" aria-labelledby="tab-abo">
+      <div id="p-mois" role="tabpanel" aria-labelledby="t-mois">
         <div class="plans">
           <article class="plan">
-            <div><h3>Démarrage</h3><p class="plan-for">Commerces et entrepreneurs</p></div>
-            <div class="price"><b>75 000 – 125 000</b><small>FCFA HT par mois</small></div>
-            <ul class="ticks">
-              <li>Gestion de 2 réseaux sociaux</li>
-              <li>8 publications par mois</li>
-              <li>Maintenance du site</li>
-              <li>1 formation en ligne Teranga Academy</li>
-            </ul>
-            <a class="btn" href="#contact" data-plan="Démarrage">Choisir Démarrage</a>
+            <div><h3>Démarrage</h3><p class="for">Commerces, entrepreneurs</p></div>
+            <p class="price">75 000 à 125 000<small>FCFA HT par mois</small></p>
+            <ul><li>2 réseaux sociaux gérés</li><li>8 publications par mois</li><li>Maintenance du site</li><li>1 cours Teranga Academy</li></ul>
+            <a class="btn btn-outline" href="#contact" data-need="Formule Démarrage">Demander un devis</a>
           </article>
-          <article class="plan feat">
-            <span class="badge">Pensée pour les PME</span>
-            <div><h3>Croissance</h3><p class="plan-for">PME de 10 à 50 personnes</p></div>
-            <div class="price"><b>200 000 – 350 000</b><small>FCFA HT par mois</small></div>
-            <ul class="ticks">
-              <li>Gestion de 3 réseaux sociaux</li>
-              <li>16 publications par mois</li>
-              <li>Publicité en ligne (budget média en plus)</li>
-              <li>Support informatique</li>
-              <li>5 accès Teranga Academy</li>
-            </ul>
-            <a class="btn btn-gold" href="#contact" data-plan="Croissance">Choisir Croissance</a>
+          <article class="plan main">
+            <div><h3>Croissance</h3><p class="for">PME de 10 à 50 personnes</p></div>
+            <p class="price">200 000 à 350 000<small>FCFA HT par mois</small></p>
+            <ul><li>3 réseaux sociaux gérés</li><li>16 publications par mois</li><li>Publicité en ligne (budget média à part)</li><li>Support informatique</li><li>5 accès Teranga Academy</li></ul>
+            <a class="btn btn-primary" href="#contact" data-need="Formule Croissance">Demander un devis</a>
           </article>
           <article class="plan">
-            <div><h3>Partenaire</h3><p class="plan-for">PME structurées, ONG, institutions</p></div>
-            <div class="price"><b>500 000 – 900 000</b><small>FCFA HT par mois</small></div>
-            <ul class="ticks">
-              <li>Communication complète</li>
-              <li>Infogérance</li>
-              <li>1 journée de formation par mois</li>
-              <li>Teranga Academy illimité pour l'équipe</li>
-            </ul>
-            <a class="btn" href="#contact" data-plan="Partenaire">Choisir Partenaire</a>
+            <div><h3>Partenaire</h3><p class="for">PME structurées, ONG, institutions</p></div>
+            <p class="price">500 000 à 900 000<small>FCFA HT par mois</small></p>
+            <ul><li>Toute votre communication</li><li>Infogérance</li><li>1 journée de formation par mois</li><li>Teranga Academy pour toute l'équipe</li></ul>
+            <a class="btn btn-outline" href="#contact" data-need="Formule Partenaire">Demander un devis</a>
           </article>
         </div>
       </div>
 
-      <div id="panel-forfait" role="tabpanel" aria-labelledby="tab-forfait" hidden>
-        <div class="forfaits">
+      <div id="p-projet" role="tabpanel" aria-labelledby="t-projet" hidden>
+        <div class="table">
           <table>
-            <thead><tr><th scope="col">Prestation</th><th scope="col">Prix indicatif (FCFA HT)</th></tr></thead>
+            <thead><tr><th scope="col">Prestation</th><th scope="col">FCFA HT</th></tr></thead>
             <tbody>
-              <tr><td>Site vitrine (5 pages)</td><td>350 000 – 600 000</td></tr>
-              <tr><td>Site e-commerce ou plateforme</td><td>900 000 – 2 500 000</td></tr>
-              <tr><td>Identité visuelle (logo et charte)</td><td>250 000 – 600 000</td></tr>
-              <tr><td>Audit informatique PME</td><td>300 000 – 750 000</td></tr>
-              <tr><td>Stratégie de communication</td><td>400 000 – 1 000 000</td></tr>
-              <tr><td>Formation en entreprise (par jour, 15 personnes max.)</td><td>250 000 – 450 000</td></tr>
-              <tr><td>Formation en ligne Teranga Academy (par personne)</td><td>15 000 – 75 000</td></tr>
-              <tr><td>Journée de conseil (consultant senior)</td><td>150 000 – 300 000</td></tr>
+              <tr><td>Site vitrine de 5 pages</td><td>350 000 à 600 000</td></tr>
+              <tr><td>Site e-commerce ou plateforme</td><td>900 000 à 2 500 000</td></tr>
+              <tr><td>Logo et charte graphique</td><td>250 000 à 600 000</td></tr>
+              <tr><td>Audit informatique d'une PME</td><td>300 000 à 750 000</td></tr>
+              <tr><td>Stratégie de communication</td><td>400 000 à 1 000 000</td></tr>
+              <tr><td>Formation en entreprise, par jour (15 personnes max.)</td><td>250 000 à 450 000</td></tr>
+              <tr><td>Cours en ligne Teranga Academy, par personne</td><td>15 000 à 75 000</td></tr>
+              <tr><td>Journée de conseil avec un consultant senior</td><td>150 000 à 300 000</td></tr>
             </tbody>
           </table>
         </div>
       </div>
 
-      <div class="terms">
-        <span>Paiement Wave et Orange Money accepté</span>
-        <span>Acompte de 40 % à la commande pour les projets</span>
-        <span>TVA de 18 % en sus</span>
-      </div>
+      <p class="small-print">TVA de 18 % en plus. Paiement par Wave, Orange Money ou virement. Pour les projets, nous demandons un acompte de 40 % à la commande.</p>
     </div>
   </section>
 
-  <section class="section academy" id="academy">
+  <figure class="band-photo" style="margin:0">
+    <img src="https://images.unsplash.com/photo-1611258490565-4a06c019e631?w=2000&q=75&auto=format&fit=crop" srcset="https://images.unsplash.com/photo-1611258490565-4a06c019e631?w=900&q=75&auto=format&fit=crop 900w, https://images.unsplash.com/photo-1611258490565-4a06c019e631?w=2000&q=75&auto=format&fit=crop 2000w" sizes="100vw" width="2000" height="1000" loading="lazy" alt="La mosquée de la Divinité à Ouakam, au bord de l'océan, à Dakar">
+    <figcaption>Ouakam, Dakar</figcaption>
+  </figure>
+
+  <section class="section" id="academy">
+    <div class="wrap academy">
+      <div class="academy-text">
+        <span class="kicker" style="margin:0">Teranga Academy</span>
+        <h2>La formation continue après notre départ</h2>
+        <p>Teranga Academy est notre plateforme de cours en ligne. Quand nous installons un outil chez vous, vos employés trouvent le cours qui va avec et le suivent à leur rythme, sur ordinateur ou sur téléphone.</p>
+        <dl>
+          <div><dt>Espace entreprise</dt><dd>Un accès pour toute votre équipe, et vous voyez qui a fini quel module.</dd></div>
+          <div><dt>Formule hybride</dt><dd>Une journée en salle, puis la suite en ligne. Attestation à la fin.</dd></div>
+          <div><dt>Prix en FCFA</dt><dd>Pas de paiement en dollars ni en euros. Wave et Orange Money acceptés.</dd></div>
+          <div><dt>Ouvert à tous</dt><dd>Les particuliers peuvent aussi s'inscrire aux cours certifiants.</dd></div>
+        </dl>
+        <div><a class="btn btn-dark" href="#contact" data-need="Teranga Academy">Former mon équipe</a></div>
+      </div>
+      <img src="https://images.unsplash.com/photo-1694286067026-a8aa654481f7?w=1000&q=80&auto=format&fit=crop" width="1000" height="1250" loading="lazy" alt="Une formatrice s'adresse à un groupe de participants assis">
+    </div>
+  </section>
+
+  <section class="section soft" id="pourquoi">
     <div class="wrap">
-      <div class="head" style="margin-bottom:0">
-        <span class="eyebrow">Teranga Academy</span>
-        <h2>La formation <em>continue</em> après la mission.</h2>
-        <p class="lede">Teranga Academy est notre plateforme de formation en ligne. Après un site ou un nouvel outil, vos équipes apprennent à s'en servir seules, à leur rythme, en français et avec des cas sénégalais.</p>
-        <div><a class="btn btn-gold" href="#contact" data-plan="Teranga Academy">Former mon équipe</a></div>
+      <div class="intro">
+        <div><span class="kicker">Pourquoi nous</span><h2>Et pourquoi pas un freelance, ou une grande agence ?</h2></div>
+        <p>Bonne question. Chaque option a ses avantages. Voici ce qui manque souvent, et ce que nous faisons différemment.</p>
       </div>
-      <ul class="academy-list">
-        <li><strong>Espaces entreprise</strong><span>Un accès groupé pour votre structure, avec le suivi de la progression de chaque employé.</span></li>
-        <li><strong>Formations hybrides</strong><span>Une journée en présentiel, puis des modules en ligne et une attestation.</span></li>
-        <li><strong>Prix en FCFA</strong><span>Pas de paiement en dollars ou en euros : vous réglez en FCFA, par Wave ou Orange Money.</span></li>
-        <li><strong>Cours ouverts à tous</strong><span>Des formations certifiantes pour les particuliers qui veulent se reconvertir.</span></li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="section" id="pourquoi">
-    <div class="wrap">
-      <div class="head">
-        <span class="eyebrow">Pourquoi nous</span>
-        <h2>Le prix d'une petite structure, <em>l'offre</em> d'un cabinet complet.</h2>
-        <p class="lede">Nous nous plaçons entre les freelances bon marché et les grands cabinets : une offre intégrée, et une formation qui reste après la mission.</p>
-      </div>
-      <div class="compare">
-        <table>
-          <thead><tr><th scope="col">Si vous travaillez avec…</th><th scope="col">Ce qui manque souvent</th><th scope="col">Ce que nous apportons</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">Un freelance ou une petite agence web</th><td>Un seul métier, peu de suivi, pas de formation</td><td>Une offre complète, maintenance et formation incluses</td></tr>
-            <tr><th scope="row">Une grande agence de communication</th><td>Des tarifs pensés pour les grands comptes, peu de technique</td><td>Des formules mensuelles accessibles dès 75 000 FCFA</td></tr>
-            <tr><th scope="row">Une SSII ou un intégrateur</th><td>Peu de communication, des projets taillés pour les grands comptes</td><td>Un accompagnement humain et expliqué simplement</td></tr>
-            <tr><th scope="row">Un centre de formation classique</th><td>Peu de numérique, des contenus qui datent</td><td>Des formations hybrides et une plateforme en ligne</td></tr>
-            <tr><th scope="row">Une plateforme en ligne étrangère</th><td>Des prix en devises, des contenus hors contexte</td><td>Des cours en français, des cas sénégalais, le paiement Mobile Money</td></tr>
-          </tbody>
-        </table>
+      <div class="vs">
+        <div class="label-row"><span class="label">Vous travaillez avec…</span><span class="label">Ce qui manque souvent</span><span class="label">Ce que nous proposons</span></div>
+        <div><h3>Un freelance ou une petite agence web</h3><p>Un seul métier, et plus personne après la livraison.</p><p>Maintenance et formation comprises dans l'offre.</p></div>
+        <div><h3>Une grande agence de communication</h3><p>Des tarifs taillés pour les grands comptes.</p><p>Des formules à partir de 75 000 FCFA par mois.</p></div>
+        <div><h3>Une SSII ou un intégrateur</h3><p>Très technique, peu de communication, et peu de temps pour les PME.</p><p>Quelqu'un qui explique simplement et qui vous rappelle.</p></div>
+        <div><h3>Un centre de formation classique</h3><p>Peu de numérique, des supports qui datent.</p><p>Des formations en salle et en ligne, mises à jour.</p></div>
+        <div><h3>Une plateforme de cours étrangère</h3><p>Prix en devises, exemples qui ne parlent pas d'ici.</p><p>Des cours en français, des cas sénégalais, le Mobile Money.</p></div>
       </div>
     </div>
   </section>
 
-  <section class="section band" style="padding-block: clamp(56px, 7vw, 88px)">
+  <section class="section" style="padding-bottom:0">
     <div class="wrap">
       <div class="pilot">
-        <span class="pilot-n" aria-hidden="true">3</span>
         <div>
-          <h3>Nous recherchons trois clients pilotes</h3>
-          <p>Pour nos débuts, trois structures bénéficient d'un tarif réduit sur leur première mission, en échange d'un retour d'expérience que nous pourrons citer.</p>
+          <h2>Nous cherchons nos trois premiers clients</h2>
+          <p>Nous démarrons. Les trois premières structures qui nous font confiance ont un tarif réduit sur leur première mission. En échange, nous vous demandons un avis que nous pourrons citer.</p>
         </div>
-        <a class="btn btn-bissap" href="#contact" data-plan="Client pilote">Je suis intéressé</a>
+        <a class="btn btn-primary" href="#contact" data-need="Client pilote">Je suis intéressé <span class="arrow" aria-hidden="true">→</span></a>
       </div>
     </div>
   </section>
 
-  <section class="section contact" id="contact">
-    <div class="wrap">
-      <div class="contact-info">
-        <div class="head" style="margin-bottom:0">
-          <span class="eyebrow">Contact</span>
-          <h2>Parlons de <em>votre projet</em>.</h2>
-          <p class="lede">Décrivez votre besoin en quelques lignes. Nous vous répondons avec une première analyse et une proposition chiffrée.</p>
-        </div>
+  <section class="section" id="contact">
+    <div class="wrap contact">
+      <div class="contact-text">
+        <span class="kicker" style="margin:0">Contact</span>
+        <h2>Parlez-nous de votre projet</h2>
+        <p>Quelques lignes suffisent. Nous vous répondons avec une première analyse et, si vous le voulez, une date de rendez-vous.</p>
         <dl class="coords" id="coords"></dl>
       </div>
 
-      <form id="contact-form" novalidate>
-        <div class="row2">
-          <label for="f-nom">Votre nom<input id="f-nom" name="nom" autocomplete="name" required placeholder="Aïssatou Diop"></label>
-          <label for="f-structure">Structure<input id="f-structure" name="structure" autocomplete="organization" placeholder="Nom de l'entreprise ou de l'ONG"></label>
+      <form id="form" novalidate>
+        <div class="row">
+          <label for="f-nom">Nom <i aria-hidden="true">*</i><input id="f-nom" name="nom" autocomplete="name" required aria-describedby="e-nom"><span class="err" id="e-nom" role="alert"></span></label>
+          <label for="f-structure">Entreprise ou organisation<input id="f-structure" name="structure" autocomplete="organization"></label>
         </div>
-        <div class="row2">
+        <div class="row">
           <label for="f-besoin">Votre besoin
             <select id="f-besoin" name="besoin">
-              <option>Diagnostic numérique</option>
-              <option>Site web ou application</option>
+              <option>Un premier diagnostic</option>
+              <option>Un site web ou une application</option>
               <option>Communication et réseaux sociaux</option>
-              <option>Formation des équipes</option>
+              <option>Former mon équipe</option>
               <option>Formule Démarrage</option>
               <option>Formule Croissance</option>
               <option>Formule Partenaire</option>
@@ -580,14 +494,16 @@ footer .quote { font: italic 500 1.15rem/1.4 var(--f-display); opacity: 0.95; co
               <option>Client pilote</option>
             </select>
           </label>
-          <label for="f-ville">Ville<input id="f-ville" name="ville" autocomplete="address-level2" placeholder="Dakar"></label>
+          <label for="f-ville">Ville<input id="f-ville" name="ville" autocomplete="address-level2"></label>
         </div>
-        <label for="f-message">Message<textarea id="f-message" name="message" required placeholder="Nous sommes une boutique de 8 personnes et voulons vendre en ligne…"></textarea></label>
-        <button class="btn btn-gold" type="submit">Préparer mon message</button>
-        <p class="form-note" id="form-note">Votre message est préparé ici, puis envoyé par WhatsApp ou par e-mail.</p>
-        <div class="result" id="result" hidden>
+        <label for="f-message">Message <i aria-hidden="true">*</i><textarea id="f-message" name="message" required aria-describedby="e-message" placeholder="Par exemple : nous sommes une boutique de 8 personnes à Thiès et nous voulons vendre en ligne."></textarea><span class="err" id="e-message" role="alert"></span></label>
+        <div class="form-foot">
+          <button class="btn btn-primary" type="submit">Préparer mon message</button>
+          <p>Vous l'envoyez ensuite par WhatsApp ou par e-mail.</p>
+        </div>
+        <div class="result" id="result" hidden aria-live="polite">
           <pre id="result-text"></pre>
-          <div class="result-actions" id="result-actions"></div>
+          <div id="result-actions"></div>
         </div>
       </form>
     </div>
@@ -596,31 +512,31 @@ footer .quote { font: italic 500 1.15rem/1.4 var(--f-display); opacity: 0.95; co
 
 <footer>
   <div class="wrap">
-    <a class="brand" href="#accueil"><span class="brand-mark" aria-hidden="true">T</span><span class="brand-name">Teranga Consulting<small>Dakar · Sénégal</small></span></a>
-    <p class="quote">De la stratégie à la formation de vos équipes.</p>
-    <p>© <span id="year">2026</span> Teranga Consulting. Prix indicatifs, hors TVA.</p>
+    <a class="logo" href="#"><span class="logo-mark" aria-hidden="true">T</span><b>Teranga</b><span class="logo-sub">Consulting</span></a>
+    <nav aria-label="Pied de page"><a href="#services">Services</a><a href="#tarifs">Tarifs</a><a href="#academy">Teranga Academy</a><a href="#contact">Contact</a></nav>
+    <p>© <span id="year">2026</span> Teranga Consulting · Dakar · Photos : Unsplash</p>
   </div>
 </footer>
 
 <script>
-// Coordonnées de l'agence : à compléter avant la mise en ligne.
+// Coordonnées de l'agence, à compléter.
 // whatsapp : numéro international sans espaces ni « + », par exemple "221771234567".
 const CONTACT = { whatsapp: "", email: "", telephone: "", adresse: "Dakar, Sénégal" };
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// Coordonnées
 const coords = document.getElementById("coords");
-[["WhatsApp", CONTACT.whatsapp && "+" + CONTACT.whatsapp], ["E-mail", CONTACT.email], ["Téléphone", CONTACT.telephone], ["Adresse", CONTACT.adresse]].forEach(([k, v]) => {
-  const row = document.createElement("div");
-  const dt = document.createElement("dt"); dt.textContent = k;
-  const dd = document.createElement("dd");
-  if (v) dd.textContent = v; else { dd.textContent = "Bientôt disponible"; dd.className = "todo"; }
-  row.append(dt, dd); coords.append(row);
-});
+[["WhatsApp", CONTACT.whatsapp && "+" + CONTACT.whatsapp], ["E-mail", CONTACT.email], ["Téléphone", CONTACT.telephone], ["Adresse", CONTACT.adresse]]
+  .filter(([, v]) => v)
+  .forEach(([k, v]) => {
+    const row = document.createElement("div");
+    const dt = document.createElement("dt"); dt.textContent = k;
+    const dd = document.createElement("dd"); dd.textContent = v;
+    row.append(dt, dd); coords.append(row);
+  });
 
-// Onglets des formules
-const tabs = [...document.querySelectorAll('.switch [role="tab"]')];
+// Onglets des tarifs
+const tabs = [...document.querySelectorAll('.tabs [role="tab"]')];
 tabs.forEach(tab => tab.addEventListener("click", () => {
   tabs.forEach(t => {
     const on = t === tab;
@@ -629,55 +545,56 @@ tabs.forEach(tab => tab.addEventListener("click", () => {
   });
 }));
 
-// Les boutons de formule pré-remplissent le besoin
+// Les boutons des offres pré-remplissent le besoin
 const besoin = document.getElementById("f-besoin");
-document.querySelectorAll("[data-plan]").forEach(a => a.addEventListener("click", () => {
-  const p = a.dataset.plan;
-  const opt = [...besoin.options].find(o => o.text === p || o.text === "Formule " + p);
-  if (opt) besoin.value = opt.text;
-}));
+document.querySelectorAll("[data-need]").forEach(a => a.addEventListener("click", () => { besoin.value = a.dataset.need; }));
 
-// Formulaire : prépare le message puis propose WhatsApp, e-mail ou copie
-const form = document.getElementById("contact-form");
+// Formulaire
+const form = document.getElementById("form");
 const result = document.getElementById("result");
 const resultText = document.getElementById("result-text");
 const actions = document.getElementById("result-actions");
-const note = document.getElementById("form-note");
+
+function check(field, msg) {
+  const err = document.getElementById("e-" + field.name);
+  err.textContent = field.value.trim() ? "" : msg;
+  return !!field.value.trim();
+}
+form.nom.addEventListener("blur", () => check(form.nom, "Indiquez votre nom."));
+form.message.addEventListener("blur", () => check(form.message, "Dites-nous en quelques mots ce dont vous avez besoin."));
 
 form.addEventListener("submit", e => {
   e.preventDefault();
+  const okNom = check(form.nom, "Indiquez votre nom.");
+  const okMsg = check(form.message, "Dites-nous en quelques mots ce dont vous avez besoin.");
+  if (!okNom || !okMsg) { (okNom ? form.message : form.nom).focus(); return; }
+
   const d = Object.fromEntries(new FormData(form));
-  if (!d.nom.trim() || !d.message.trim()) {
-    note.textContent = "Indiquez au moins votre nom et votre message.";
-    (d.nom.trim() ? form.message : form.nom).focus();
-    return;
-  }
-  const text = `Bonjour Teranga Consulting,\n\nJe m'appelle ${d.nom.trim()}${d.structure.trim() ? " (" + d.structure.trim() + ")" : ""}${d.ville.trim() ? ", à " + d.ville.trim() : ""}.\nBesoin : ${d.besoin}\n\n${d.message.trim()}`;
+  const qui = d.nom.trim() + (d.structure.trim() ? ", " + d.structure.trim() : "") + (d.ville.trim() ? " (" + d.ville.trim() + ")" : "");
+  const text = `Bonjour,\n\nJe suis ${qui}.\nMon besoin : ${d.besoin}.\n\n${d.message.trim()}`;
   resultText.textContent = text;
   actions.replaceChildren();
 
-  const link = (label, href, cls) => {
+  const add = (label, href, cls) => {
     const a = document.createElement("a");
     a.className = "btn " + cls; a.href = href; a.target = "_blank"; a.rel = "noopener"; a.textContent = label;
     actions.append(a);
   };
-  if (CONTACT.whatsapp) link("Envoyer sur WhatsApp", "https://wa.me/" + CONTACT.whatsapp + "?text=" + encodeURIComponent(text), "btn-gold");
-  if (CONTACT.email) link("Envoyer par e-mail", "mailto:" + CONTACT.email + "?subject=" + encodeURIComponent("Demande : " + d.besoin) + "&body=" + encodeURIComponent(text), "btn-line");
+  if (CONTACT.whatsapp) add("Envoyer sur WhatsApp", "https://wa.me/" + CONTACT.whatsapp + "?text=" + encodeURIComponent(text), "btn-primary");
+  if (CONTACT.email) add("Envoyer par e-mail", "mailto:" + CONTACT.email + "?subject=" + encodeURIComponent(d.besoin) + "&body=" + encodeURIComponent(text), "btn-outline");
 
   const copy = document.createElement("button");
-  copy.type = "button"; copy.className = "btn btn-line"; copy.textContent = "Copier le message";
+  copy.type = "button"; copy.className = "btn btn-outline"; copy.textContent = "Copier le message";
   copy.addEventListener("click", () => {
-    navigator.clipboard.writeText(text).then(() => { copy.textContent = "Message copié"; }).catch(() => {
+    navigator.clipboard.writeText(text).then(() => { copy.textContent = "Copié"; }).catch(() => {
       const r = document.createRange(); r.selectNodeContents(resultText);
       const s = getSelection(); s.removeAllRanges(); s.addRange(r);
-      copy.textContent = "Texte sélectionné, faites Ctrl+C";
+      copy.textContent = "Texte sélectionné : Ctrl+C pour copier";
     });
   });
   actions.append(copy);
-
-  note.textContent = CONTACT.whatsapp || CONTACT.email
-    ? "Votre message est prêt. Choisissez comment l'envoyer."
-    : "Votre message est prêt. Nos coordonnées seront bientôt en ligne : copiez-le en attendant.";
   result.hidden = false;
 });
 </script>
+</body>
+</html>

@@ -1,0 +1,649 @@
+<title>Kaïra Conseil Studio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Hanken+Grotesk:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout : grands aplats de couleur façon affiche de rue, nav claire, studio d'affiches au centre de la page, conteneur 1160px */
+:root {
+  --bg: #FFFFFF;
+  --surface: #F3F5F2;
+  --ink: #0B1F1A;
+  --muted: #4E5E58;
+  --line: #D9E0DC;
+  --bissap: #A3195B;
+  --bissap-ink: #FFFFFF;
+  --sun: #F5C518;
+  --forest: #0F5A44;
+  --mint: #D3EBDF;
+  --f-display: "Dela Gothic One", "Arial Black", Impact, sans-serif;
+  --f-body: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --r: 10px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0A1512; --surface: #13211C; --ink: #EAF2EE; --muted: #A2B3AC; --line: #26372F;
+    --bissap: #D0407F; --bissap-ink: #FFFFFF; --sun: #F5C518; --forest: #3FB58F; --mint: #173A2E; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0A1512; --surface: #13211C; --ink: #EAF2EE; --muted: #A2B3AC; --line: #26372F;
+  --bissap: #D0407F; --bissap-ink: #FFFFFF; --sun: #F5C518; --forest: #3FB58F; --mint: #173A2E; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 17px; line-height: 1.6; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+h1, h2, h3 { margin: 0; line-height: 1.08; text-wrap: balance; }
+h1, h2 { font-family: var(--f-display); font-weight: 400; }
+h2 { font-size: clamp(1.8rem, 4.2vw, 2.8rem); }
+h3 { font-size: 1.2rem; font-weight: 800; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; border-radius: 4px; }
+.wrap { max-width: 1160px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+section { padding-block: clamp(60px, 8vw, 104px); }
+.label { font-family: var(--f-mono); font-size: 0.76rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--bissap); }
+.lede { color: var(--muted); font-size: 1.1rem; max-width: 60ch; }
+.head { display: grid; gap: 12px; margin-bottom: 40px; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font: 700 0.98rem var(--f-body); padding: 13px 22px; border-radius: 8px; border: 2px solid var(--ink); text-decoration: none; cursor: pointer; background: var(--ink); color: var(--bg); transition: transform .12s ease, box-shadow .12s ease; }
+.btn:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--sun); }
+.btn-line { background: transparent; color: var(--ink); }
+.btn-sun { background: var(--sun); color: #0B1F1A; border-color: #0B1F1A; }
+.btn[disabled] { opacity: .5; cursor: not-allowed; transform: none; box-shadow: none; }
+
+/* Nav */
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--bg); border-bottom: 2px solid var(--ink); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding-block: 12px; }
+.brand { font-family: var(--f-display); font-size: 1.2rem; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+.brand i { width: 26px; height: 26px; border-radius: 50%; background: var(--sun); box-shadow: inset -8px 0 0 var(--bissap); display: block; }
+.nav ul { display: flex; gap: 24px; list-style: none; margin: 0; padding: 0; font-weight: 600; font-size: 0.95rem; }
+.nav ul a { text-decoration: none; }
+.nav ul a:hover { text-decoration: underline; text-decoration-thickness: 3px; text-decoration-color: var(--sun); text-underline-offset: 6px; }
+.nav .new { font-family: var(--f-mono); font-size: 0.66rem; background: var(--bissap); color: var(--bissap-ink); padding: 2px 6px; border-radius: 4px; margin-left: 4px; vertical-align: 2px; }
+.nav .btn { padding: 9px 16px; font-size: 0.88rem; }
+@media (max-width: 880px) { .nav ul { display: none; } }
+
+/* Hero */
+.hero { padding-block: clamp(44px, 6vw, 80px); }
+.hero .wrap { display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; align-items: stretch; }
+.hero-main { display: grid; gap: 24px; align-content: center; min-width: 0; }
+.hero h1 { font-size: clamp(2.4rem, 6.4vw, 4.8rem); letter-spacing: -0.01em; }
+.hero h1 .hl { background: linear-gradient(transparent 58%, var(--sun) 58% 92%, transparent 92%); padding: 0 4px; }
+.hero-main p { font-size: 1.15rem; color: var(--muted); max-width: 50ch; }
+.hero-cta { display: flex; flex-wrap: wrap; gap: 12px; }
+.picker { background: var(--forest); color: #FFFFFF; border-radius: 16px; padding: 28px; display: grid; gap: 16px; align-content: start; min-width: 0; }
+.picker h3 { font-family: var(--f-display); font-weight: 400; font-size: 1.35rem; }
+.choices { display: grid; gap: 8px; }
+.choice { text-align: left; font: 600 1rem var(--f-body); padding: 12px 14px; border-radius: 8px; border: 1.5px solid rgba(255,255,255,.35); background: transparent; color: #FFFFFF; cursor: pointer; }
+.choice[aria-pressed="true"] { background: var(--sun); color: #0B1F1A; border-color: var(--sun); }
+.answer { background: rgba(255,255,255,.1); border-radius: 10px; padding: 16px; display: grid; gap: 8px; font-size: 0.96rem; }
+.answer b { font-family: var(--f-mono); font-weight: 500; font-size: 0.72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--sun); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .picker { background: #0F3F31; } }
+:root[data-theme="dark"] .picker { background: #0F3F31; }
+@media (max-width: 880px) { .hero .wrap { grid-template-columns: 1fr; } }
+
+/* Ticker */
+.ticker { background: var(--ink); color: var(--bg); padding-block: 14px; font-family: var(--f-mono); font-size: 0.85rem; letter-spacing: .06em; text-transform: uppercase; }
+.ticker .wrap { display: flex; flex-wrap: wrap; gap: 8px 28px; justify-content: space-between; }
+.ticker span::before { content: "■ "; color: var(--sun); }
+
+/* Services en onglets */
+.tabs { display: flex; flex-wrap: wrap; gap: 0; border-bottom: 2px solid var(--ink); }
+.tab { font: 800 1rem var(--f-body); padding: 14px 22px; background: transparent; border: 0; border-bottom: 5px solid transparent; margin-bottom: -2px; color: var(--muted); cursor: pointer; }
+.tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--bissap); }
+.panel { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; padding-top: 34px; }
+.panel > div { min-width: 0; }
+.svc { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.svc li { background: var(--surface); border-radius: var(--r); padding: 16px 18px; font-weight: 600; }
+.deliv { border: 2px solid var(--ink); border-radius: var(--r); padding: 22px; display: grid; gap: 10px; align-content: start; }
+.deliv .label { color: var(--forest); }
+@media (max-width: 820px) { .panel { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { .svc { grid-template-columns: 1fr; } }
+
+/* Formules */
+.band { background: var(--surface); }
+.table-wrap { overflow-x: auto; border: 2px solid var(--ink); border-radius: var(--r); background: var(--bg); }
+table { width: 100%; border-collapse: collapse; min-width: 640px; }
+th, td { padding: 14px 18px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+thead th { font-family: var(--f-display); font-weight: 400; font-size: 1.15rem; border-bottom: 2px solid var(--ink); }
+thead th.mid { background: var(--sun); color: #0B1F1A; }
+tbody th { font-weight: 600; color: var(--muted); font-size: 0.92rem; width: 22%; }
+td.mid { background: color-mix(in srgb, var(--sun) 14%, transparent); }
+.price { font-family: var(--f-display); font-size: 1.15rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.forfaits { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-top: 28px; }
+.forfait { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; padding: 14px 16px; border-radius: 8px; background: var(--bg); border: 1px solid var(--line); }
+.forfait span:last-child { font-variant-numeric: tabular-nums; font-weight: 700; white-space: nowrap; font-size: 0.92rem; }
+.note { color: var(--muted); font-size: 0.9rem; margin-top: 16px; }
+
+/* Studio affiches */
+.studio-head { display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; align-items: end; margin-bottom: 34px; }
+.studio-head > div { display: grid; gap: 12px; min-width: 0; }
+.how { display: grid; gap: 6px; font-size: 0.95rem; color: var(--muted); }
+.how div::before { content: "✓ "; color: var(--forest); font-weight: 800; }
+.studio { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 440px); gap: 36px; align-items: start; }
+.controls { display: grid; gap: 18px; min-width: 0; }
+fieldset { border: 1px solid var(--line); border-radius: var(--r); padding: 18px; margin: 0; display: grid; gap: 14px; min-width: 0; }
+legend { font-family: var(--f-mono); font-size: 0.74rem; letter-spacing: .1em; text-transform: uppercase; color: var(--bissap); padding: 0 6px; }
+label { display: grid; gap: 6px; font-weight: 600; font-size: 0.92rem; }
+input, select, textarea { font: 400 1rem var(--f-body); color: var(--ink); background: var(--bg); border: 1.5px solid var(--line); border-radius: 8px; padding: 10px 12px; width: 100%; }
+input:focus, select:focus, textarea:focus { outline: 2px solid var(--sun); outline-offset: 1px; border-color: var(--ink); }
+textarea { min-height: 84px; resize: vertical; }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.seg { display: flex; flex-wrap: wrap; gap: 6px; }
+.seg button { font: 600 0.9rem var(--f-body); padding: 8px 12px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--bg); color: var(--ink); cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.hint { font-size: 0.85rem; color: var(--muted); font-weight: 400; }
+.warn { font-size: 0.88rem; background: color-mix(in srgb, var(--sun) 28%, transparent); border-radius: 8px; padding: 8px 12px; }
+.preview { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 80px); display: grid; gap: 14px; min-width: 0; }
+.poster-box { position: relative; width: 100%; max-width: 100%; aspect-ratio: 1240 / 1754; border-radius: 6px; overflow: hidden; box-shadow: 0 1px 0 var(--line), 10px 10px 0 var(--ink); background: #FFFFFF; }
+.poster-box canvas { width: 100%; height: 100%; display: block; }
+.qr-hit { position: absolute; display: block; border-radius: 4px; }
+.qr-hit:hover, .qr-hit:focus-visible { outline: 3px solid var(--bissap); outline-offset: 2px; }
+.exports { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.status { font-size: 0.9rem; color: var(--muted); min-height: 1.4em; }
+@media (max-width: 920px) { .studio, .studio-head { grid-template-columns: 1fr; } .preview { position: static; max-width: 440px; } }
+@media (max-width: 480px) { .row2 { grid-template-columns: 1fr; } }
+
+/* Teranga Academy */
+.academy { background: var(--bissap); color: var(--bissap-ink); }
+.academy .wrap { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; }
+.academy .label { color: var(--sun); }
+.academy-copy { display: grid; gap: 18px; min-width: 0; }
+.academy-copy p { opacity: .92; font-size: 1.06rem; }
+.academy ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; border-top: 1px solid rgba(255,255,255,.35); }
+.academy li { padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.35); display: grid; grid-template-columns: 180px 1fr; gap: 14px; }
+.academy li b { font-weight: 800; }
+@media (max-width: 860px) { .academy .wrap { grid-template-columns: 1fr; } .academy li { grid-template-columns: 1fr; gap: 2px; } }
+
+/* Contact */
+.contact .wrap { display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; }
+.contact-info { display: grid; gap: 18px; align-content: start; min-width: 0; }
+.todo { color: var(--muted); font-style: italic; }
+form.card { border: 2px solid var(--ink); border-radius: var(--r); padding: 26px; display: grid; gap: 14px; min-width: 0; }
+.form-msg { background: var(--mint); border-radius: 8px; padding: 12px 14px; font-size: 0.95rem; }
+@media (max-width: 860px) { .contact .wrap { grid-template-columns: 1fr; } }
+
+footer { border-top: 2px solid var(--ink); }
+footer .wrap { padding-block: 28px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 0.9rem; color: var(--muted); }
+</style>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#accueil"><i aria-hidden="true"></i>Kaïra Conseil</a>
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#formules">Formules</a></li>
+      <li><a href="#studio">Studio affiches<span class="new">QR</span></a></li>
+      <li><a href="#academy">Teranga Academy</a></li>
+    </ul>
+    <a class="btn" href="#contact">Nous contacter</a>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="accueil">
+  <div class="wrap">
+    <div class="hero-main">
+      <span class="label">Conseil · Dakar, Sénégal</span>
+      <h1>Votre entreprise, <span class="hl">mieux équipée</span>, mieux connue, mieux formée.</h1>
+      <p>Informatique, communication et formation professionnelle pour les PME, entrepreneurs, ONG et institutions. Une seule équipe, des prix en FCFA.</p>
+      <div class="hero-cta">
+        <a class="btn" href="#contact">Diagnostic gratuit</a>
+        <a class="btn btn-line" href="#studio">Créer une affiche</a>
+      </div>
+    </div>
+    <aside class="picker" aria-label="Trouver le bon service">
+      <h3>Que voulez-vous améliorer ?</h3>
+      <div class="choices" role="group">
+        <button class="choice" type="button" data-need="it" aria-pressed="true">Nos outils informatiques</button>
+        <button class="choice" type="button" data-need="com" aria-pressed="false">Notre visibilité</button>
+        <button class="choice" type="button" data-need="form" aria-pressed="false">Les compétences de l'équipe</button>
+      </div>
+      <div class="answer" id="answer" aria-live="polite"></div>
+    </aside>
+  </div>
+</section>
+
+<div class="ticker"><div class="wrap"><span>Diagnostic gratuit</span><span>Dès 75 000 FCFA / mois</span><span>Wave · Orange Money</span><span>Formation en ligne incluse</span></div></div>
+
+<section id="services">
+  <div class="wrap">
+    <div class="head">
+      <span class="label">Services</span>
+      <h2>Trois métiers sous le même toit</h2>
+    </div>
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" id="t-it" aria-controls="p-it" aria-selected="true">Informatique</button>
+      <button class="tab" role="tab" id="t-com" aria-controls="p-com" aria-selected="false">Communication</button>
+      <button class="tab" role="tab" id="t-form" aria-controls="p-form" aria-selected="false">Formation</button>
+    </div>
+    <div class="panel" role="tabpanel" id="p-it" aria-labelledby="t-it">
+      <div><ul class="svc"><li>Audit du système d'information</li><li>Sites web et applications</li><li>Google Workspace, Microsoft 365</li><li>Cybersécurité de base</li><li>Infogérance et maintenance</li></ul></div>
+      <div class="deliv"><span class="label">Ce que vous recevez</span><p>Un rapport d'audit, un site en ligne, un parc informatique sécurisé et un contrat de maintenance.</p></div>
+    </div>
+    <div class="panel" role="tabpanel" id="p-com" aria-labelledby="t-com" hidden>
+      <div><ul class="svc"><li>Stratégie de marque</li><li>Identité visuelle</li><li>Réseaux sociaux</li><li>Publicité Meta et Google</li><li>Relations presse</li><li>Vidéo et photo</li></ul></div>
+      <div class="deliv"><span class="label">Ce que vous recevez</span><p>Une charte graphique, un calendrier éditorial, des campagnes et un rapport chaque mois.</p></div>
+    </div>
+    <div class="panel" role="tabpanel" id="p-form" aria-labelledby="t-form" hidden>
+      <div><ul class="svc"><li>Formations sur mesure en entreprise</li><li>Cours en ligne Teranga Academy</li><li>Bureautique et outils numériques</li><li>Marketing digital</li><li>Gestion de projet</li><li>Séminaires inter-entreprises</li></ul></div>
+      <div class="deliv"><span class="label">Ce que vous recevez</span><p>Un programme, des supports, une attestation ou un certificat et une évaluation des acquis.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="formules">
+  <div class="wrap">
+    <div class="head">
+      <span class="label">Formules</span>
+      <h2>Comparez les abonnements</h2>
+      <p class="lede">Prix indicatifs hors TVA (18 %), ajustés après le diagnostic.</p>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th></th><th>Démarrage</th><th class="mid">Croissance</th><th>Partenaire</th></tr></thead>
+        <tbody>
+          <tr><th>Prix / mois</th><td class="price">75 000 – 125 000</td><td class="price mid">200 000 – 350 000</td><td class="price">500 000 – 900 000</td></tr>
+          <tr><th>Pour qui</th><td>Commerces, entrepreneurs</td><td class="mid">PME de 10 à 50 personnes</td><td>PME structurées, ONG, institutions</td></tr>
+          <tr><th>Communication</th><td>2 réseaux, 8 publications</td><td class="mid">3 réseaux, 16 publications, publicité en ligne</td><td>Communication complète</td></tr>
+          <tr><th>Informatique</th><td>Maintenance du site</td><td class="mid">Support informatique</td><td>Infogérance</td></tr>
+          <tr><th>Formation</th><td>1 cours Teranga Academy</td><td class="mid">5 accès Teranga Academy</td><td>1 jour / mois + accès illimité</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="forfaits">
+      <div class="forfait"><span>Site vitrine (5 pages)</span><span>350 000 – 600 000</span></div>
+      <div class="forfait"><span>E-commerce / plateforme</span><span>900 000 – 2 500 000</span></div>
+      <div class="forfait"><span>Logo + charte</span><span>250 000 – 600 000</span></div>
+      <div class="forfait"><span>Audit informatique</span><span>300 000 – 750 000</span></div>
+      <div class="forfait"><span>Stratégie de communication</span><span>400 000 – 1 000 000</span></div>
+      <div class="forfait"><span>Formation (jour, 15 pers.)</span><span>250 000 – 450 000</span></div>
+      <div class="forfait"><span>Cours en ligne (par pers.)</span><span>15 000 – 75 000</span></div>
+      <div class="forfait"><span>Journée de conseil</span><span>150 000 – 300 000</span></div>
+    </div>
+    <p class="note">Projets au forfait, en FCFA. Acompte de 40 % à la commande, paiement par Wave, Orange Money ou virement.</p>
+  </div>
+</section>
+
+<section id="studio">
+  <div class="wrap">
+    <div class="studio-head">
+      <div>
+        <span class="label">Studio affiches</span>
+        <h2>Créez vos affiches de prospection en deux minutes</h2>
+        <p class="lede">Choisissez un service, ajustez le texte et la destination du code QR, puis enregistrez l'affiche.</p>
+      </div>
+      <div class="how">
+        <div>PDF A4 : code QR cliquable à l'écran et scannable une fois imprimé</div>
+        <div>Image PNG : à partager sur WhatsApp ou les réseaux sociaux</div>
+        <div>Cliquez sur le code QR de l'aperçu pour tester le lien</div>
+      </div>
+    </div>
+
+    <div class="studio">
+      <div class="controls">
+        <fieldset>
+          <legend>Service et style</legend>
+          <label>Service mis en avant
+            <span class="seg" id="seg-pole" role="group">
+              <button type="button" data-v="it" aria-pressed="true">Informatique</button>
+              <button type="button" data-v="com" aria-pressed="false">Communication</button>
+              <button type="button" data-v="form" aria-pressed="false">Formation</button>
+              <button type="button" data-v="all" aria-pressed="false">Agence</button>
+            </span>
+          </label>
+          <label>Modèle
+            <span class="seg" id="seg-tpl" role="group">
+              <button type="button" data-v="bandeau" aria-pressed="true">Bandeau</button>
+              <button type="button" data-v="plein" aria-pressed="false">Plein</button>
+              <button type="button" data-v="sobre" aria-pressed="false">Sobre</button>
+            </span>
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Texte de l'affiche</legend>
+          <label for="p-title">Titre<input id="p-title" maxlength="80"></label>
+          <label for="p-offer">Accroche (bandeau)<input id="p-offer" maxlength="50"></label>
+          <label for="p-points">Points clés <span class="hint">une ligne par point, 4 au maximum</span><textarea id="p-points"></textarea></label>
+          <label for="p-cta">Texte sous le code QR<input id="p-cta" maxlength="40"></label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Code QR</legend>
+          <label>Le code QR mène vers
+            <span class="seg" id="seg-dest" role="group">
+              <button type="button" data-v="wa" aria-pressed="true">WhatsApp</button>
+              <button type="button" data-v="url" aria-pressed="false">Un lien web</button>
+            </span>
+          </label>
+          <div id="dest-wa" class="row2">
+            <label for="p-wa">Numéro WhatsApp<input id="p-wa" type="tel" inputmode="tel" placeholder="77 123 45 67"></label>
+            <label for="p-wamsg">Message pré-rempli<input id="p-wamsg" value="Bonjour, j'ai vu votre affiche. Je souhaite un diagnostic gratuit."></label>
+          </div>
+          <div id="dest-url" class="row2" hidden>
+            <label for="p-url">Adresse du lien<input id="p-url" type="url" placeholder="https://votre-site.sn"></label>
+            <label for="p-camp">Nom de la campagne <span class="hint">pour le suivi</span><input id="p-camp" placeholder="salon-pme-2026"></label>
+          </div>
+          <p class="warn" id="dest-warn" hidden></p>
+          <label for="p-contact">Contact affiché en bas <span class="hint">facultatif</span><input id="p-contact" placeholder="+221 … · contact@…"></label>
+        </fieldset>
+      </div>
+
+      <div class="preview">
+        <div class="poster-box">
+          <canvas id="poster" width="1240" height="1754" aria-label="Aperçu de l'affiche"></canvas>
+          <a class="qr-hit" id="qr-hit" target="_blank" rel="noopener" aria-label="Ouvrir le lien du code QR"></a>
+        </div>
+        <div class="exports">
+          <button class="btn" type="button" id="dl-pdf">Enregistrer en PDF (A4)</button>
+          <button class="btn btn-line" type="button" id="dl-png">Enregistrer en PNG</button>
+        </div>
+        <p class="status" id="status" aria-live="polite"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="academy" id="academy">
+  <div class="wrap">
+    <div class="academy-copy">
+      <span class="label">Teranga Academy</span>
+      <h2>La formation continue après la mission</h2>
+      <p>Vos équipes apprennent à utiliser seules les outils mis en place, avec des cours en français, des cas sénégalais et un paiement en FCFA par Mobile Money.</p>
+    </div>
+    <ul>
+      <li><b>Espaces entreprise</b><span>Un accès groupé, avec le suivi de la progression de chaque employé.</span></li>
+      <li><b>Formations hybrides</b><span>Une journée en présentiel, puis des modules en ligne et une attestation.</span></li>
+      <li><b>Cours publics</b><span>Des formations certifiantes pour se reconvertir ou progresser.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-info">
+      <span class="label">Contact</span>
+      <h2>Demandez votre diagnostic gratuit</h2>
+      <p class="lede">Nous vous rappelons sous 48 heures.</p>
+      <p><b>Adresse :</b> Dakar <span class="todo">(à compléter)</span><br><b>Téléphone :</b> <span class="todo">à compléter</span><br><b>E-mail :</b> <span class="todo">à compléter</span></p>
+    </div>
+    <form class="card" id="contact-form" novalidate>
+      <div class="row2">
+        <label for="c-nom">Nom complet<input id="c-nom" autocomplete="name"></label>
+        <label for="c-tel">Téléphone ou WhatsApp<input id="c-tel" type="tel" autocomplete="tel"></label>
+      </div>
+      <label for="c-org">Structure<input id="c-org" autocomplete="organization"></label>
+      <label for="c-msg">Votre besoin<textarea id="c-msg"></textarea></label>
+      <button class="btn btn-sun" type="submit" style="justify-self:start">Envoyer ma demande</button>
+      <p class="form-msg" id="c-out" hidden></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>Kaïra Conseil (nom provisoire) · Informatique, communication, formation · Dakar</span><span>Formation en ligne : Teranga Academy</span></div></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+<script>
+(function () {
+  /* ---------- Sélecteur du hero ---------- */
+  var NEEDS = {
+    it: { s: 'Audit informatique, messagerie pro, site web, maintenance.', f: 'Audit PME au forfait (300 000 – 750 000 FCFA), puis formule Croissance pour le support.' },
+    com: { s: 'Identité visuelle, réseaux sociaux, publicité en ligne.', f: 'Formule Démarrage dès 75 000 FCFA / mois, ou Croissance avec publicité.' },
+    form: { s: 'Formation en entreprise et cours en ligne sur Teranga Academy.', f: 'Journée de formation (250 000 – 450 000 FCFA) ou accès en ligne dès 15 000 FCFA / personne.' }
+  };
+  var answer = document.getElementById('answer');
+  function showNeed(k) {
+    answer.innerHTML = '<b>Nos services</b><span></span><b>Pour commencer</b><span></span>';
+    var spans = answer.querySelectorAll('span');
+    spans[0].textContent = NEEDS[k].s; spans[1].textContent = NEEDS[k].f;
+  }
+  document.querySelectorAll('.choice').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.querySelectorAll('.choice').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+      showNeed(b.dataset.need);
+    });
+  });
+  showNeed('it');
+
+  /* ---------- Onglets services ---------- */
+  var tabs = document.querySelectorAll('.tab');
+  tabs.forEach(function (t) {
+    t.addEventListener('click', function () {
+      tabs.forEach(function (x) {
+        var on = x === t;
+        x.setAttribute('aria-selected', String(on));
+        document.getElementById(x.getAttribute('aria-controls')).hidden = !on;
+      });
+    });
+  });
+
+  /* ---------- Formulaire de contact (aperçu) ---------- */
+  document.getElementById('contact-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var out = document.getElementById('c-out');
+    out.textContent = 'Aperçu : le formulaire sera relié à la messagerie de l\'agence lors de la mise en ligne. Aucune demande n\'a été envoyée.';
+    out.hidden = false;
+  });
+
+  /* ---------- Studio affiches ---------- */
+  var W = 1240, H = 1754;               // A4 à 150 dpi
+  var PRESETS = {
+    it: { title: 'Votre informatique enfin fiable et sécurisée', offer: 'Audit gratuit de 30 minutes', points: 'Site web professionnel\nMessagerie pro Google ou Microsoft\nSauvegardes et cybersécurité\nMaintenance mensuelle', cta: 'Scannez pour un audit gratuit', color: '#0F5A44', accent: '#F5C518', soft: '#D3EBDF' },
+    com: { title: 'Faites-vous connaître de vos clients', offer: 'Dès 75 000 FCFA / mois', points: 'Logo et identité visuelle\nGestion de vos réseaux sociaux\nPublicité Facebook et Google\nRapport mensuel des résultats', cta: 'Scannez pour en parler', color: '#A3195B', accent: '#F5C518', soft: '#F6DCE8' },
+    form: { title: 'Formez vos équipes, sur place et en ligne', offer: 'Attestation à la clé', points: 'Bureautique et outils numériques\nMarketing digital\nGestion de projet\nCours en ligne sur Teranga Academy', cta: 'Scannez pour voir les formations', color: '#1E2A5A', accent: '#F5C518', soft: '#DDE2F2' },
+    all: { title: 'Votre partenaire numérique, de la stratégie à la formation', offer: 'Diagnostic gratuit', points: 'Informatique : sites, cloud, maintenance\nCommunication : marque, réseaux sociaux\nFormation : en entreprise et en ligne\nPaiement Wave et Orange Money', cta: 'Scannez pour un diagnostic gratuit', color: '#0B1F1A', accent: '#F5C518', soft: '#E6ECE9' }
+  };
+  var state = { pole: 'it', tpl: 'bandeau', dest: 'wa' };
+  var $ = function (id) { return document.getElementById(id); };
+  var canvas = $('poster'), ctx = canvas.getContext('2d');
+  var qrRect = null, qrTarget = '';
+
+  function seg(id, key, after) {
+    var root = $(id);
+    root.querySelectorAll('button').forEach(function (b) {
+      b.addEventListener('click', function () {
+        root.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+        state[key] = b.dataset.v;
+        if (after) after();
+        draw();
+      });
+    });
+  }
+  function fillPreset() {
+    var p = PRESETS[state.pole];
+    $('p-title').value = p.title; $('p-offer').value = p.offer; $('p-points').value = p.points; $('p-cta').value = p.cta;
+  }
+  seg('seg-pole', 'pole', fillPreset);
+  seg('seg-tpl', 'tpl');
+  seg('seg-dest', 'dest', function () { $('dest-wa').hidden = state.dest !== 'wa'; $('dest-url').hidden = state.dest !== 'url'; });
+  ['p-title', 'p-offer', 'p-points', 'p-cta', 'p-wa', 'p-wamsg', 'p-url', 'p-camp', 'p-contact'].forEach(function (id) { $(id).addEventListener('input', draw); });
+
+  function slug(s) { return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''); }
+
+  // Calcule la destination du QR ; renvoie {url, warn}
+  function target() {
+    if (state.dest === 'wa') {
+      var digits = $('p-wa').value.replace(/\D/g, '');
+      if (digits.length === 9) digits = '221' + digits;           // numéro sénégalais sans indicatif
+      var msg = $('p-wamsg').value.trim();
+      if (digits.length < 11) {
+        return { url: 'https://wa.me/221000000000' + (msg ? '?text=' + encodeURIComponent(msg) : ''), warn: 'Entrez votre numéro WhatsApp (9 chiffres, par exemple 77 123 45 67) : le code QR actuel est un exemple qui ne mène nulle part.' };
+      }
+      return { url: 'https://wa.me/' + digits + (msg ? '?text=' + encodeURIComponent(msg) : ''), warn: '' };
+    }
+    var raw = $('p-url').value.trim();
+    if (!raw) return { url: 'https://exemple.sn', warn: 'Entrez l\'adresse du lien : le code QR actuel pointe vers une adresse d\'exemple.' };
+    if (!/^https?:\/\//i.test(raw)) raw = 'https://' + raw;
+    var u;
+    try { u = new URL(raw); } catch (e) { return { url: 'https://exemple.sn', warn: 'Cette adresse n\'est pas valide. Exemple : https://votre-site.sn' }; }
+    var camp = slug($('p-camp').value);
+    if (camp) { u.searchParams.set('utm_source', 'affiche'); u.searchParams.set('utm_medium', 'qr'); u.searchParams.set('utm_campaign', camp); }
+    return { url: u.toString(), warn: '' };
+  }
+
+  function wrap(text, maxW) {
+    var words = text.split(/\s+/).filter(Boolean), lines = [], line = '';
+    words.forEach(function (w) {
+      var t = line ? line + ' ' + w : w;
+      if (ctx.measureText(t).width > maxW && line) { lines.push(line); line = w; } else line = t;
+    });
+    if (line) lines.push(line);
+    return lines;
+  }
+  // Écrit un texte sur plusieurs lignes en réduisant la taille jusqu'à tenir dans maxLines
+  function fitText(text, x, y, maxW, size, minSize, maxLines, font, color, lh) {
+    var lines;
+    do { ctx.font = font.replace('%s', size); lines = wrap(text, maxW); if (lines.length <= maxLines) break; size -= 4; } while (size > minSize);
+    ctx.fillStyle = color;
+    lines.slice(0, maxLines).forEach(function (l, i) { ctx.fillText(l, x, y + i * size * lh); });
+    return y + Math.min(lines.length, maxLines) * size * lh;
+  }
+  function roundRect(x, y, w, h, r, color) { ctx.fillStyle = color; ctx.beginPath(); ctx.roundRect ? ctx.roundRect(x, y, w, h, r) : ctx.rect(x, y, w, h); ctx.fill(); }
+
+  function drawQR(url, x, y, size) {
+    var qr = qrcode(0, 'M'); qr.addData(url); qr.make();
+    var n = qr.getModuleCount(), quiet = 4, cell = Math.floor(size / (n + quiet * 2)), real = cell * (n + quiet * 2);
+    var ox = x + Math.floor((size - real) / 2), oy = y + Math.floor((size - real) / 2);
+    ctx.fillStyle = '#FFFFFF'; ctx.fillRect(x, y, size, size);
+    ctx.fillStyle = '#000000';
+    for (var r = 0; r < n; r++) for (var c = 0; c < n; c++) if (qr.isDark(r, c)) ctx.fillRect(ox + (c + quiet) * cell, oy + (r + quiet) * cell, cell, cell);
+  }
+
+  function brand(x, y, color, dot) {
+    ctx.fillStyle = dot; ctx.beginPath(); ctx.arc(x + 22, y - 16, 22, 0, Math.PI * 2); ctx.fill();
+    ctx.font = '40px "Dela Gothic One"'; ctx.fillStyle = color; ctx.fillText('Kaïra Conseil', x + 62, y);
+  }
+
+  function draw() {
+    var p = PRESETS[state.pole], t = target();
+    qrTarget = t.url;
+    $('dest-warn').textContent = t.warn; $('dest-warn').hidden = !t.warn;
+    var title = $('p-title').value.trim() || p.title;
+    var offer = $('p-offer').value.trim();
+    var points = $('p-points').value.split('\n').map(function (s) { return s.trim(); }).filter(Boolean).slice(0, 4);
+    var cta = $('p-cta').value.trim();
+    var contact = $('p-contact').value.trim();
+    var M = 90, tpl = state.tpl;
+    ctx.textBaseline = 'alphabetic';
+    var dark = tpl === 'plein', bg = dark ? p.color : '#FFFFFF', fg = dark ? '#FFFFFF' : '#0B1F1A';
+    ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+    var y;
+
+    if (tpl === 'bandeau') {
+      ctx.fillStyle = p.color; ctx.fillRect(0, 0, W, 780);
+      // motif : losanges en bas du bandeau
+      ctx.fillStyle = p.accent;
+      for (var i = 0; i < 16; i++) { ctx.beginPath(); ctx.moveTo(i * 80, 780); ctx.lineTo(i * 80 + 40, 740); ctx.lineTo(i * 80 + 80, 780); ctx.fill(); }
+      brand(M, 150, '#FFFFFF', p.accent);
+      fitText(title, M, 330, W - 2 * M, 104, 64, 4, '%spx "Dela Gothic One"', '#FFFFFF', 1.12);
+      y = 880;
+    } else if (tpl === 'plein') {
+      brand(M, 150, '#FFFFFF', p.accent);
+      y = fitText(title, M, 340, W - 2 * M, 112, 64, 4, '%spx "Dela Gothic One"', '#FFFFFF', 1.1);
+      y = Math.max(y + 20, 820);
+    } else {
+      ctx.strokeStyle = p.color; ctx.lineWidth = 14; ctx.strokeRect(40, 40, W - 80, H - 80);
+      brand(M, 170, p.color, p.accent);
+      ctx.fillStyle = p.color; ctx.fillRect(M, 220, 120, 10);
+      y = fitText(title, M, 360, W - 2 * M, 96, 60, 4, '%spx "Dela Gothic One"', '#0B1F1A', 1.14);
+      y = Math.max(y + 20, 800);
+    }
+
+    // Accroche
+    if (offer) {
+      ctx.font = '800 46px "Hanken Grotesk"';
+      var ow = ctx.measureText(offer).width + 60;
+      roundRect(M, y, ow, 84, 42, p.accent);
+      ctx.fillStyle = '#0B1F1A'; ctx.fillText(offer, M + 30, y + 57);
+      y += 140;
+    } else y += 30;
+
+    // Points clés (colonne gauche) + QR (droite)
+    var qrSize = 400, qrX = W - M - qrSize, qrY = y;
+    var colW = qrX - M - 50;
+    var py = y + 30;
+    points.forEach(function (pt) {
+      ctx.fillStyle = dark ? p.accent : p.color;
+      ctx.save(); ctx.translate(M + 14, py - 14); ctx.rotate(Math.PI / 4); ctx.fillRect(-11, -11, 22, 22); ctx.restore();
+      py = fitText(pt, M + 50, py, colW - 50, 40, 28, 2, '600 %spx "Hanken Grotesk"', fg, 1.25) + 34;
+    });
+
+    if (dark) roundRect(qrX - 24, qrY - 24, qrSize + 48, qrSize + 120, 24, '#FFFFFF');
+    else if (tpl === 'bandeau') roundRect(qrX - 24, qrY - 24, qrSize + 48, qrSize + 120, 24, p.soft);
+    drawQR(t.url, qrX, qrY, qrSize);
+    qrRect = { x: qrX, y: qrY, w: qrSize, h: qrSize };
+    if (cta) {
+      ctx.font = '700 30px "Hanken Grotesk"'; ctx.fillStyle = '#0B1F1A';
+      var lines = wrap(cta, qrSize + 20);
+      lines.slice(0, 2).forEach(function (l, i) { ctx.fillText(l, qrX + (qrSize - ctx.measureText(l).width) / 2, qrY + qrSize + 50 + i * 36); });
+    }
+
+    // Pied de l'affiche
+    var fy = H - 150;
+    ctx.fillStyle = dark ? 'rgba(255,255,255,.35)' : '#D9E0DC'; ctx.fillRect(M, fy - 60, W - 2 * M, 3);
+    ctx.font = '600 32px "Hanken Grotesk"'; ctx.fillStyle = fg;
+    ctx.fillText(contact || 'Informatique · Communication · Formation · Dakar', M, fy);
+    ctx.font = '500 26px "IBM Plex Mono"'; ctx.fillStyle = dark ? 'rgba(255,255,255,.75)' : '#4E5E58';
+    ctx.fillText('Paiement Wave et Orange Money · Formation en ligne : Teranga Academy', M, fy + 50);
+
+    // Zone cliquable de l'aperçu
+    var hit = $('qr-hit');
+    hit.href = t.url; hit.title = t.url;
+    hit.style.left = (qrRect.x / W * 100) + '%'; hit.style.top = (qrRect.y / H * 100) + '%';
+    hit.style.width = (qrRect.w / W * 100) + '%'; hit.style.height = (qrRect.h / H * 100) + '%';
+  }
+
+  /* ---------- Exports ---------- */
+  var downloadsP = (window.claude && window.claude.use) ? window.claude.use('downloads') : Promise.resolve(null);
+  var status = $('status');
+  function fileBase() { return 'affiche-' + state.pole + '-' + state.tpl; }
+  function canvasBlob(type) { return new Promise(function (res) { canvas.toBlob(res, type, 0.92); }); }
+  function explain(err) {
+    var c = err && err.code;
+    if (c === 'declined') return 'Enregistrement annulé.';
+    if (c === 'rate_limited') return 'Une fenêtre d\'enregistrement est déjà ouverte. Réessayez dans un instant.';
+    return 'L\'enregistrement n\'est pas disponible ici. Ouvrez la page dans claude.ai pour enregistrer l\'affiche.';
+  }
+  async function save(kind) {
+    var dl = await downloadsP;
+    if (!dl) { status.textContent = 'L\'enregistrement n\'est pas disponible dans cette vue. Ouvrez la page dans claude.ai.'; return; }
+    status.textContent = 'Préparation du fichier…';
+    try {
+      var data, name;
+      if (kind === 'png') { data = await canvasBlob('image/png'); name = fileBase() + '.png'; }
+      else {
+        var jsPDF = window.jspdf.jsPDF;
+        var pdf = new jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' });
+        var jpg = canvas.toDataURL('image/jpeg', 0.95);
+        pdf.addImage(jpg, 'JPEG', 0, 0, 210, 297);
+        var k = 210 / W;                               // pixels -> millimètres
+        pdf.link(qrRect.x * k, qrRect.y * k, qrRect.w * k, qrRect.h * k, { url: qrTarget });
+        pdf.setProperties({ title: $('p-title').value, subject: 'Affiche de prospection', creator: 'Kaïra Conseil' });
+        data = pdf.output('blob'); name = fileBase() + '.pdf';
+      }
+      await dl.save({ filename: name, data: data });
+      status.textContent = 'Fichier ' + name + ' enregistré.';
+    } catch (err) { status.textContent = explain(err); }
+  }
+  $('dl-pdf').addEventListener('click', function () { save('pdf'); });
+  $('dl-png').addEventListener('click', function () { save('png'); });
+  downloadsP.then(function (dl) { if (!dl) { $('dl-pdf').disabled = true; $('dl-png').disabled = true; status.textContent = 'L\'enregistrement des fichiers est disponible quand la page est ouverte dans claude.ai.'; } });
+
+  fillPreset();
+  draw();
+  if (document.fonts && document.fonts.load) {
+    Promise.all([
+      document.fonts.load('40px "Dela Gothic One"'), document.fonts.load('800 40px "Hanken Grotesk"'),
+      document.fonts.load('600 40px "Hanken Grotesk"'), document.fonts.load('700 40px "Hanken Grotesk"'), document.fonts.load('500 26px "IBM Plex Mono"')
+    ]).then(draw, draw);
+  }
+})();
+</script>

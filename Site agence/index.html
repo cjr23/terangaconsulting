@@ -11,30 +11,37 @@
 <link rel="preconnect" href="https://images.unsplash.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap">
 <style>
-/* Mise en page : éditoriale, alignée à gauche, photos réelles en grand, peu d'ornements. Une seule couleur de marque (bissap), le reste en noir et blanc. */
+/* Mise en page : éditoriale, alignée à gauche, photos réelles. Bleu nuit pour les grandes bandes (en-tête, héros, offre phare, pied de page), jaune soleil pour les actions et un bandeau. */
 :root {
   --bg: #FFFFFF;
-  --soft: #F5F3F1;
-  --ink: #161314;
-  --muted: #5F5759;
-  --line: #E4DFDD;
-  --brand: #7A1F43;
+  --soft: #F2F5FB;
+  --ink: #0E1530;
+  --muted: #4F5873;
+  --line: #DCE2EF;
+  --brand: #1A44C2;
   --brand-ink: #FFFFFF;
-  --brand-soft: #F6E9EE;
+  --brand-soft: #E5ECFC;
+  --blue: #0B2A78;
+  --blue-deep: #081F5C;
+  --on-blue: #FFFFFF;
+  --yellow: #FFC72C;
+  --on-yellow: #15110A;
   --font: "Schibsted Grotesk", "Helvetica Neue", Arial, system-ui, sans-serif;
   --ease: cubic-bezier(.2, .7, .2, 1);
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #121011; --soft: #1B1819; --ink: #F2EDEE; --muted: #ABA1A4; --line: #2E292B;
-    --brand: #D9779E; --brand-ink: #1A0B11; --brand-soft: #2A1820;
+    --bg: #0A0E1D; --soft: #10162C; --ink: #EDF1FA; --muted: #A2ABC5; --line: #222B4A;
+    --brand: #93B2FF; --brand-ink: #0A0E1D; --brand-soft: #172251;
+    --blue: #0E2B73; --blue-deep: #091E55;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #121011; --soft: #1B1819; --ink: #F2EDEE; --muted: #ABA1A4; --line: #2E292B;
-  --brand: #D9779E; --brand-ink: #1A0B11; --brand-soft: #2A1820;
+  --bg: #0A0E1D; --soft: #10162C; --ink: #EDF1FA; --muted: #A2ABC5; --line: #222B4A;
+  --brand: #93B2FF; --brand-ink: #0A0E1D; --brand-soft: #172251;
+  --blue: #0E2B73; --blue-deep: #091E55;
   color-scheme: dark;
 }
 
@@ -234,7 +241,54 @@ footer nav { display: flex; flex-wrap: wrap; gap: 8px 24px; }
 footer a { text-decoration: none; }
 footer a:hover { color: var(--ink); }
 
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; } }
+/* Habillage bleu et jaune */
+body::before { background: var(--blue); }
+.btn-primary { background: var(--yellow); color: var(--on-yellow); }
+.btn-primary:hover { background: color-mix(in srgb, var(--yellow) 88%, #000); }
+.btn-dark { background: var(--blue); color: var(--on-blue); }
+.btn-dark:hover { background: var(--brand); color: var(--brand-ink); }
+:focus-visible { outline-color: var(--yellow); }
+
+.top { background: color-mix(in srgb, var(--blue) 96%, transparent); border-bottom-color: color-mix(in srgb, var(--on-blue) 12%, transparent); color: var(--on-blue); }
+.top .logo-sub { color: color-mix(in srgb, var(--on-blue) 70%, transparent); }
+.top .menu a { color: color-mix(in srgb, var(--on-blue) 78%, transparent); }
+.top .menu a:hover { color: var(--yellow); }
+.logo-mark { background: var(--yellow); color: var(--on-yellow); }
+
+.hero { background: radial-gradient(90% 120% at 100% 0%, #1B47B8 0%, var(--blue) 45%, var(--blue-deep) 100%); color: var(--on-blue); overflow: hidden; padding-bottom: clamp(72px, 9vw, 112px); }
+.hero h1 span { color: var(--yellow); background: linear-gradient(var(--yellow), var(--yellow)) left 100% / 0% 0.09em no-repeat; padding-bottom: 0.04em; animation: underline .9s .35s var(--ease) forwards; }
+@keyframes underline { to { background-size: 100% 0.09em; } }
+.hero-text > p { color: color-mix(in srgb, var(--on-blue) 82%, transparent); }
+.hero .btn-outline { color: var(--on-blue); border-color: color-mix(in srgb, var(--on-blue) 40%, transparent); }
+.hero .btn-outline:hover { border-color: var(--on-blue); }
+.hero-photo { isolation: isolate; }
+.hero-photo::before { content: ""; position: absolute; inset: 28px -28px -28px 28px; background: var(--yellow); border-radius: 10px; z-index: -1; }
+.hero-note { background: var(--bg); color: var(--ink); }
+@media (max-width: 900px) { .hero-photo::before { inset: 16px -12px -16px 16px; } }
+
+.facts { background: var(--yellow); color: var(--on-yellow); border: 0; }
+.facts p { color: color-mix(in srgb, var(--on-yellow) 74%, transparent); border-color: color-mix(in srgb, var(--on-yellow) 18%, transparent) !important; }
+.facts b { color: var(--on-yellow); }
+
+.tabs button[aria-selected="true"] { background: var(--blue); color: var(--on-blue); }
+.plan.main { background: var(--blue); color: var(--on-blue); box-shadow: none; position: relative; }
+.plan.main::before { content: "Notre formule pour les PME"; position: absolute; top: 0; right: 0; background: var(--yellow); color: var(--on-yellow); font-size: 0.78rem; font-weight: 700; padding: 6px 12px; border-bottom-left-radius: 8px; }
+.plan.main .for, .plan.main .price small { color: color-mix(in srgb, var(--on-blue) 72%, transparent); }
+.plan.main ul { border-top-color: color-mix(in srgb, var(--on-blue) 18%, transparent); }
+.plan.main li::before { border-color: var(--yellow); }
+
+.pilot { background: var(--blue); color: var(--on-blue); position: relative; overflow: hidden; }
+.pilot::after { content: ""; position: absolute; width: 340px; height: 340px; border-radius: 50%; background: var(--yellow); right: -120px; top: -150px; opacity: .95; }
+.pilot > * { position: relative; z-index: 1; }
+.pilot p { color: color-mix(in srgb, var(--on-blue) 78%, transparent); }
+@media (max-width: 860px) { .pilot::after { width: 200px; height: 200px; right: -80px; top: -110px; } }
+
+footer { background: var(--blue-deep); color: color-mix(in srgb, var(--on-blue) 72%, transparent); border-top: 0; }
+footer .logo b { color: var(--on-blue); }
+footer .logo-sub { color: color-mix(in srgb, var(--on-blue) 70%, transparent); }
+footer a:hover { color: var(--yellow); }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } .hero h1 span { background-size: 100% 0.09em; } }
 </style>
 </head>
 <body>
@@ -249,7 +303,7 @@ footer a:hover { color: var(--ink); }
       <li><a href="#tarifs">Tarifs</a></li>
       <li><a href="#academy">Teranga Academy</a></li>
     </ul>
-    <a class="btn btn-dark" href="#contact">Nous écrire</a>
+    <a class="btn btn-primary" href="#contact">Nous écrire</a>
   </div>
 </header>
 

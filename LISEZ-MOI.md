@@ -5,8 +5,8 @@
 - En ligne : https://claude.ai/artifact/KTh3JFj3AQe7Tyi5WS53pK
 
 ## Site vitrine (Teranga Consulting ; la v1 utilisait le nom provisoire Kaïra Conseil)
-- `Site agence/index.html` : version 4, page d'accueil (https://terangaconsulting.vercel.app), photos Unsplash
-- `Site agence/v5/index.html` : version 5 bleu et jaune (/v5/)
+- `Site agence/index.html` : version 5 bleu et jaune, page d'accueil (https://terangaconsulting.vercel.app), photos Unsplash
+- `Site agence/v4/index.html` : version 4 bissap (/v4/)
 - `Site agence/v3/index.html` : version 3 (/v3/)
 - `Site agence/v1/index.html` : version 1 (https://claude.ai/artifact/FA8VejJXgqtPhosT35hP9V)
 - `Site agence/v2/index.html` : version 2 avec le Studio affiches et les codes QR (https://claude.ai/artifact/JXwKWPLUewPeV1h13WN3HP)

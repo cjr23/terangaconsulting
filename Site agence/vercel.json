@@ -1,9 +1,0 @@
-{
-  "cleanUrls": true,
-  "rewrites": [
-    { "source": "/", "destination": "/index-v3.html" },
-    { "source": "/v1", "destination": "/index.html" },
-    { "source": "/v2", "destination": "/index-v2.html" },
-    { "source": "/v3", "destination": "/index-v3.html" }
-  ]
-}
